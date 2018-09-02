@@ -12,7 +12,6 @@
         <a href="#"><strong>Help? </strong></a>
       </div>
   </div>
-
   <div class="wrapper"></div>
         <div class="sidebar" id="sidenav">
             <h1><center> MENU [Admin]</h1></center>
@@ -22,24 +21,32 @@
         </div>
   <!--Section For Adding Food Items-->
     <form action="#" style="border:1px solid #ccc">
-        
-       
         <div class="content" align="center">
-            <h1>ADD FOOD ITEMS HERE!</h1>
-            <label><b> Package Name:</b></label>
-                 <input type="text" name="package" placeholder="Enter Name of Package"  required><br>
-            <label><b> Package Items:</b></label>
-                <input type="text" name="item" placeholder="Use a Comma seperator"  required><br>
-            <label><b> Package Price:</b></label>
-                <input type="text" name="price" placeholder=" Enter Price per Package"  required><br>
-            <label><b> Description:</b></label>
-                <input type="text" name="packageDescription" placeholder="Describe Package:"  required><br>
-            <label><b> Browse Pic:</b></label>
-                <input type="file" name="packageImage" > <br>
-            <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signupbtn"> SUBMIT</button>
-            </div>
+            <fieldset>
+                <legend>ADD FOOD ITEMS HERE</legend>
+                <div>
+                    <label><b> Package Name:</b></label>
+                    <input type="text" name="package" placeholder="Enter Name of Package"  required>
+                </div>
+                    <div><label><b> Package Items:</b></label>
+                    <input type="text" name="item" placeholder="Use a Comma seperator"  required>
+                </div>
+                    <div><label><b> Package Price:</b></label>
+                    <input type="text" name="price" placeholder=" Enter Price per Package"  required>
+                </div>
+                <div>
+                    <label><b> Description:</b></label>
+                    <input type="text" name="packageDescription" placeholder="Describe Package:"  required>
+                </div>
+                <div>
+                    <label for="avatar">Package Image:</label>
+                    <input type="file" id="packageimage" name="packageimage" accept="image/png, image/jpeg" />
+                </div>
+                <div class="clearfix">
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn"> SUBMIT</button>
+                </div>
+            </fieldset>
       </div>
     </form>
 </body>
