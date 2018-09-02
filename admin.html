@@ -1,27 +1,46 @@
-<!DOCTYPE html>
+
+<!--DOCTYPE html-->
 <html>
 <head>
 <title>Fast Food Fast</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
-<body background="images/package8.jpg"> 
-    <div class="header">
-        <a href="#default" class="fast">FAST FOOD FAST</a>
-        <div class="header-right">
-        <a href="#about">Help ?</a>
-        </div>
-    </div>
-    <div class="wrapper">
+<body background="images/package8.jpg">
+  <div class="header">
+      <a href="#" class="fast">FAST FOOD FAST </a>
+      <div class="header-right">
+        <a href="#"><strong>Help? </strong></a>
+      </div>
+  </div>
+
+  <div class="wrapper"></div>
         <div class="sidebar" id="sidenav">
             <h1><center> MENU [Admin]</h1></center>
             <a href="#"> Add Food Item</a>
             <a href="#"> Food Item List</a>
-            <a href="#"> View Order List</a> 
+            <a href="orderlist.html"> View Order List</a>      
         </div>
-        <div class="content">
-            <p>DASHBOARD</p>         
-        </div>
-    </div>
+  <!--Section For Adding Food Items-->
+    <form action="#" style="border:1px solid #ccc">
+        
+       
+        <div class="content" align="center">
+            <h1>ADD FOOD ITEMS HERE!</h1>
+            <label><b> Package Name:</b></label>
+                 <input type="text" name="package" placeholder="Enter Name of Package"  required><br>
+            <label><b> Package Items:</b></label>
+                <input type="text" name="item" placeholder="Use a Comma seperator"  required><br>
+            <label><b> Package Price:</b></label>
+                <input type="text" name="price" placeholder=" Enter Price per Package"  required><br>
+            <label><b> Description:</b></label>
+                <input type="text" name="packageDescription" placeholder="Describe Package:"  required><br>
+            <label><b> Browse Pic:</b></label>
+                <input type="file" name="packageImage" > <br>
+            <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn"> SUBMIT</button>
+            </div>
+      </div>
+    </form>
 </body>
 </html>
