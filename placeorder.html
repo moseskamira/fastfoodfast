@@ -26,13 +26,13 @@
                         <!--Customer Billing Address  Information-->
                         <h3>BILLING ADDRESS INFORMATION</h3>
                         <label> Full Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Enter  Full Name">
+                            <input type="text" id="fname" name="firstname" placeholder="Enter  Full Name" required>
                         <label> Email</label>
-			                <input type="text" id="email" name="email" placeholder="Enter Your Email Address">
+			                <input type="text" id="email" name="email" placeholder="Enter Your Email Address" required>
 			            <label> Phone Number</label>
-                            <input type="text" id="phone" name="phone" placeholder="Enter Your Phone Number">
+                            <input type="text" id="phone" name="phone" placeholder="Enter Your Phone Number" required>
                         <label> Physical Delivery Address</label>
-                            <input type="text" id="address" name="address" placeholder="Enter Physical Delivery Address">
+                            <input type="text" id="address" name="address" placeholder="Enter Physical Delivery Address" required>
                         <label> Select Package</label>
                             <div class="row">
                                 <div class="col-50">
@@ -46,7 +46,7 @@
                                 </div>
                             </div><br/>
                         <label> Specify Quantity</label>
-                            <input type="number" id="qty" name="quantity" placeholder="Select Needed Quantity">
+                            <input type="number" id="qty" name="quantity" placeholder="Select Needed Quantity" required>
                     </div>
                     <div class="col-50">
                     <!--Customer Payment Details-->
@@ -54,7 +54,7 @@
 			            <label>Select payment Mode</label>
 			            <div>
 				            <input type="radio" name="paymentmode" value="Cash On Delivery" checked> Cash On Delivery<br>
-				            <input type="radio" name="paymentmode" value="Credit Card"> Credit Card<br>
+				            <input type="radio" name="paymentmode" value="Credit Card" id="cc" onclick="myCrediCardInfo()" > Credit Card<br>
 				            <input type="radio" name="paymentmode" value="Mobile Money"> Mobile Money<br/>
 			            </div>
 			            <label> </label>
@@ -82,5 +82,10 @@
         </div>
     </div>
 </div>
+<script>
+        function myCredicCardInfo() {
+            document.getElementById("cc").innerHTML = "YOU CLICKED ME!";
+        }
+        </script>
 </body>
 </html>
