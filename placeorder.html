@@ -51,29 +51,27 @@
                     <div class="col-50">
                     <!--Customer Payment Details-->
                         <h2>PAYMENT INFORMATION</h2>
-			            <label>Select payment Mode</label>
-			            <div>
-				            <input type="radio" name="paymentmode" value="Cash On Delivery" checked> Cash On Delivery<br>
-				            <input type="radio" name="paymentmode" value="Credit Card" id="cc" onclick="myCrediCardInfo()" > Credit Card<br>
-				            <input type="radio" name="paymentmode" value="Mobile Money"> Mobile Money<br/>
-			            </div>
-			            <label> </label>
-                        <label>Name on Card</label>
-                            <input type="text" id="cname" name="cardname" placeholder="Enter Name on Your Credit Card">
-                        <label>Credit card number</label>
-                            <input type="text" id="ccnum" name="cardnumber" placeholder="Enter Credit Card Number">
-                        <label>Exp Month</label>
-                            <input type="text" id="expmonth" name="expmonth" placeholder="Enter Card Expiry Month">
-                        <div class="row">
-                            <div class="col-50">
-                                <label>Exp Year</label>
-                                <input type="text" id="expyear" name="expyear" placeholder="Enter Year of Expiry">
-                            </div>
-                            <div class="col-50">
-                                <label>CVV</label>
-                                <input type="text" id="cvv" name="cvv" placeholder="Enter Card Verification Value">
-                            </div>
-			            </div>
+			            <label>SELECT PAYMENT MODE</label>
+                        <select onchange="choosePayment(this);">
+                            <option value="cashOnDelivery">CASH ON DELIVERY</option>
+                            <option value="creditCard">CREDIT CARD</option>
+                            <option value="mobileMoney"> MOBILE MONEY</option>
+                        </select>
+                        <div id="paymentmode">&nbsp;</div>
+                            <script type="text/javascript">
+                                function choosePayment(ev){
+                                v = ev.value;
+                                if(v === 'cashOnDelivery'){
+                                    document.getElementById("paymentmode").innerHTML = "You Have Chosen Cash On Delivery: ";
+                                }
+                                else if(v === 'mobileMoney'){
+                                    document.getElementById("paymentmode").innerHTML = "Make Your Payment On: ";
+                                }
+                                else if(v === 'creditCard'){
+                                    document.getElementById("paymentmode").innerHTML = "<label>Name on Card </label> <input type='text' id='cname' name='cardname' placeholder='Enter Name on Your Credit Card'><label>Credit card number</label> <input type='text' id='ccnum' name='cardnumber' placeholder='Enter Credit Card Number'> <label>Exp Month</label> <input type='text' id='expmonth' name='expmonth' placeholder='Enter Card Expiry Month'> <div class='row'> <div class='col-50'>  <label>Exp Year</label> <input type='text' id='expyear' name='expyear' placeholder='Enter Year of Expiry'> </div> <div class='col-50'> <label>CVV</label><input type='text' id='cvv' name='cvv' placeholder='Enter Card Verification Value'> </div> </div>";
+                                }
+                            }
+                            </script>
                     </div>
                 </div>
                 <input type="submit" value="SUBMIT" class="btn">
@@ -82,10 +80,7 @@
         </div>
     </div>
 </div>
-<script>
-        function myCredicCardInfo() {
-            document.getElementById("cc").innerHTML = "YOU CLICKED ME!";
-        }
-        </script>
+
+       
 </body>
 </html>
