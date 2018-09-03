@@ -9,7 +9,5 @@ function Authenticate(){
     window.location.href ="admin.html";
 
   }else{
-
-    
   }
 }
