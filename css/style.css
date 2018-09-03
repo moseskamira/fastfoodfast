@@ -91,12 +91,12 @@ input {
 }
 .content {
     width: 65%;
-    height: 90vh;
+    height: 100vh;
     float:right;
   }
   .sidebar {
     width: 25%;
-    height: 45vh;
+    height: 55vh;
     float:left;
   }
   #sidenav a {
