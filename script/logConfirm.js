@@ -11,3 +11,6 @@ function Authenticate(){
   }else{
   }
 }
+function signupalert(){
+  alert("You Are Submiting:!");
+}
