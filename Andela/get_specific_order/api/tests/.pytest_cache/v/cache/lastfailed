@@ -1,4 +1,0 @@
-{
-  "test_order.py::test_if_parameter_passed_is_a_boolean": true,
-  "test_order.py::test_if_parameter_passed_to_function_is_a_string": true
-}
