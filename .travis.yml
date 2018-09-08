@@ -3,8 +3,4 @@ python:
   - "3.6.0"
 install:
   - pip install -r require.txt
-script:
-  - pytest --cov=api/
-  - coveralls
-after_success:
- # - coveralls
+script: pytest
