@@ -31,8 +31,8 @@ class OrderViews(MethodView):
         """
         Method For Updating a Specific Order's Status.
         """
-        if not request or not request.json:
+        if  not order_id:
             return jsonify({"status_code": 400, "data": str(request.data),
-                            "error_message": "content not JSON"}), 400
-        if order_id:
-            return self.ordersv1_handler.update_orderv1(order_id)
+                            "error_message": "content not JSON"}), 40
+        return self.ordersv1_handler.update_orderv1(order_id)
+        
