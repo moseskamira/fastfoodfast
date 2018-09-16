@@ -6,7 +6,6 @@ from api import APP
 
 MYAPP = APP
 ROUTE_CLIENT = MYAPP.test_client
-CLIENT = MYAPP.test_client
 
 def test_get_all_orders():
     """
