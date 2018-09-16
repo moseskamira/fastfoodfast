@@ -2,7 +2,6 @@ language: python
 python:
 - "3.6.0"
 install:
-- pip install pytest
 - pip install pytest-cov
 - pip install coveralls
 - pip install -r requirements.txt
