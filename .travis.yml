@@ -7,6 +7,5 @@ script:
   - pytest --cov=api/
   - coverage
   - coveralls
-  - coveralls
 after-success:
   coveralls
