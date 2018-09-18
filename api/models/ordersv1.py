@@ -54,4 +54,4 @@ class Ordersv1Handler(MethodView):
                 order_json = request.get_json()
                 orderv1['order_status'] = order_json['order_status']
                 return jsonify({'Updated Order' : orderv1})
-                     
+                
