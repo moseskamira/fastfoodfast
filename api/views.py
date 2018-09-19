@@ -25,14 +25,14 @@ class OrderViews(MethodView):
         """
         if not request or not request.json:
             return jsonify({"status_code": 400, "data": str(request.data),
-                            "error_message": "content not JSON"}), 400
+                            "error_message": "Content Not JSON"}), 400
         return self.ordersv1_handler.post_orderv1()
     def put(self, order_id):
         """
         Method For Updating a Specific Order's Status.
         """
         if  not order_id:
-            return jsonify({"status_code": 400, "data": str(request.data),
-                            "error_message": "content not JSON"}), 40
+            return jsonify({"status_code": 405,
+                            "error_message": "Method Not Found"}), 405
         return self.ordersv1_handler.update_orderv1(order_id)
         

@@ -1,5 +1,5 @@
 """
-This module sets up the flask emvironment
+Module To Set Up Flask Emvironment
 """
 import sys
 import os
