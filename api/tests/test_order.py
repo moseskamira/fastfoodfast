@@ -54,8 +54,7 @@ def test_put_order():
     assert my_result.status_code == 200
 def test_error_hander_returns_json():
     """
-    Test API returns a json format response when the user hits
-    a wrong api end point
+    The API Returns JSON Message When a Wrong Endpoint is Hit By User
     """
     response = ROUTE_CLIENT().get('/api/v1/orders/hi')
     assert response.status_code == 404

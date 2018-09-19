@@ -4,7 +4,6 @@ on the API end points for Version1 Orders.
 """
 from flask import jsonify, request
 from flask.views import MethodView
-from api.models.request import Request
 class Ordersv1Handler(MethodView):
     """
     Class with Methods For  Handling Requests
@@ -74,16 +73,13 @@ class Ordersv1Handler(MethodView):
     @staticmethod
     def request_missing_fields():
         """
-        This method returns a JSON response when containg the
-        error message that some fields are missing
-        :return
+        Method Returns JSON Response When Some Fields Are Missing
         """
         return jsonify({"Error_Message": "Some Fields Are Missing"}), 400
     @staticmethod
     def fields_missing_info():
         """
-        This method returns a JSON response when some fields in
-        the data sent are missing
+        Method Returns JSON Response When Some Fields Are Empty
         :return
         """
         return jsonify({"status_code": 400, "data": request.json,
