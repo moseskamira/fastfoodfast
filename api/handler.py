@@ -14,7 +14,7 @@ class ErrorHandler():
         """
         if status_code:
             message = {
-                "error_message": "The requested resource was not found on the server",
+                "error_message": "The Requested Resource Was Not Found On Server",
                 "status_code": 404,
                 "url":  request.url
             }
