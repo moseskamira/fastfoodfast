@@ -10,24 +10,13 @@ class Ordersv1Handler(MethodView):
     made on the API end point for version1 Orders.
     Control is Derived from OrderViews class
     """
-    orderlistv1 = [{"order_id" : 1,
-                    "order_name" : "packageOne",
-                    "quantity" : 3,
-                    "payment_mode" :"Mobile Money",
-                    "order_status" : "Completed"}, {"order_id" : 2,
-                                                    "order_name" : "packageTwo",
-                                                    "quantity" : 7,
-                                                    "payment_mode" : "Cash On Delivery",
-                                                    "order_status" : "Accepted"}]
-
-
-    requests = []
+    orderlistv1 = []
     def return_all_orders(self):
         """
         Method For Returning All Available Orders of Version 1
         """
-        return jsonify({"message": "Successfully Retrieved Available Orders."
-                                   , "orderlistv1": [self.orderlistv1]})
+        return jsonify({"message": "Available Orders."
+                                   , "orderlistv1": self.orderlistv1})
     def return_specific_order(self, order_id):
         """
         The Method Returns a Specific Order as to Enteredid
