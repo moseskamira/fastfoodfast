@@ -20,7 +20,7 @@ Installing:
   pip install [package_name] or 
   python -m pip install [package_name]
 ...................................................................................................................
-Running the tests:
+Running The Tests:
 - Tests can be run by running one of the two commands;
   pytest .\[test file name]
   python -m pytest .\[test file name]
@@ -32,7 +32,6 @@ Versioning:
 Aurtor:
 - MOSES KAMIRA
 ...................................................................................................................
-
 
 [![Build Status](https://travis-ci.org/moseskamira/fastfoodfast.svg?branch=api)](https://travis-ci.org/moseskamira/fastfoodfast)
 [![Coverage Status](https://coveralls.io/repos/github/moseskamira/fastfoodfast/badge.svg?branch=api)](https://coveralls.io/github/moseskamira/fastfoodfast?branch=api)
