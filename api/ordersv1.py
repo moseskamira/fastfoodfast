@@ -30,11 +30,10 @@ class Ordersv1Handler(MethodView):
         """
          A method for Posting a New Order of Version 1.
         """
-        requiredkeys = ("order_id", "order_name", "quantity", "payment_mode", "order_status")
+        requiredkeys = ("order_name", "quantity", "payment_mode", "order_status")
         if not set(requiredkeys).issubset(set(request.json)):
             return self.request_missing_fields()
         order_request = [
-            request.json["order_id"],
             request.json["order_name"],
             request.json["quantity"],
             request.json["payment_mode"],
@@ -42,7 +41,7 @@ class Ordersv1Handler(MethodView):
         ]
         if not all(order_request):
             return self.fields_missing_info()
-        order = {'order_id' : request.json['order_id'],
+        order = {'order_id' : len(self.orderlistv1)+1,
                  'order_name' : request.json['order_name'],
                  'quantity' : request.json['quantity'],
                  'payment_mode' : request.json['payment_mode'],
