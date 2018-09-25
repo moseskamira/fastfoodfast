@@ -3,7 +3,7 @@ A module that provides responses to url requests.
 """
 from flask import jsonify, request
 from flask.views import MethodView
-from api.models.ordersv1 import Ordersv1Handler
+from api.ordersv1 import Ordersv1Handler
 
 class OrderViews(MethodView):
     """
