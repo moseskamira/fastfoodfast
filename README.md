@@ -7,16 +7,16 @@ An Admin can Add, Edit or Delete Fast Food Items, See a List of Fast Food Items,
 
 ## PREREQUISITE:
 It is neceaasary for one to install;
--python
--pylint
--pytest
--flask
--Coveralls (More in requirements.txt file)
+- python
+- pylint
+- pytest
+- flask
+- Coveralls (More in requirements.txt file)
 
 ## INSTALLING:
 - Installing python requires one to visit the website 'https://www.python.org/' 
   from where he or she can select to download a python version depending on the Operating System
--install pytest, pylint, and flask one needs to run a command; either 
+- install pytest, pylint, and flask one needs to run a command; either 
   pip install [package_name] or 
   python -m pip install [package_name]
 
