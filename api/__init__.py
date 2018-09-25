@@ -6,7 +6,7 @@ import os
 from flask_cors import CORS
 from flask import Flask
 from api.handler import ErrorHandler
-from api.config import ENVIRONMENT, TESTING
+from config import ENVIRONMENT, TESTING
 from api.urls import Urls
 
 APP = Flask(__name__)
