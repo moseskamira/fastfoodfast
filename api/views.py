@@ -5,11 +5,13 @@ from flask import jsonify, request
 from flask.views import MethodView
 from api.ordersv1 import Ordersv1Handler
 
+
 class OrderViews(MethodView):
     """
     Class with Methods For Responding To Various url End Points.
     """
     ordersv1_handler = Ordersv1Handler()
+
     def get(self, order_id):
         """
          Method Returns All Orders If No Id Is Specified
@@ -27,11 +29,12 @@ class OrderViews(MethodView):
             return jsonify({"status_code": 400, "data": str(request.data),
                             "error_message": "Content Not JSON"}), 400
         return self.ordersv1_handler.post_orderv1()
+
     def put(self, order_id):
         """
         Method For Updating a Specific Order's Status.
         """
-        if  not order_id:
+        if not order_id:
             return jsonify({"status_code": 405,
                             "error_message": "Method Not Found"}), 405
         return self.ordersv1_handler.update_orderv1(order_id)

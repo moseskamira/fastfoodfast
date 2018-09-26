@@ -3,6 +3,7 @@ Module For Handling Errors.
 """
 from flask import jsonify, request
 
+
 class ErrorHandler():
     """
     Th For Handling Errors When Wrong urls Are Entered.
@@ -14,7 +15,8 @@ class ErrorHandler():
         """
         if status_code:
             message = {
-                "error_message": "The Requested Resource Was Not Found On Server",
+                "error_message":
+                "The Requested Resource Was Not Found On Server",
                 "status_code": 404,
                 "url":  request.url
             }
