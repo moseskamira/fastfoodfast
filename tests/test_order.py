@@ -91,7 +91,7 @@ def test_if_data_posted_is_in_form_of_json():
             }
         )
     )
-    assert response.status_code == 201
+    assert response.status_code == 200
     load_result_data = json.loads(response.data)
     assert 'orders' in load_result_data
     assert load_result_data['orders'][0]['order_id'] == 8
