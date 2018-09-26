@@ -1,6 +1,5 @@
-# PROJECT TITLE: FAST FOOD FAST APP
+# FAST FOOD FAST APP
 
-## BADGES
 [![Build Status](https://travis-ci.org/moseskamira/fastfoodfast.svg?branch=api)](https://travis-ci.org/moseskamira/fastfoodfast)
 [![Coverage Status](https://coveralls.io/repos/github/moseskamira/fastfoodfast/badge.svg?branch=api)](https://coveralls.io/github/moseskamira/fastfoodfast?branch=api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/153874419629174a2837/maintainability)](https://codeclimate.com/github/moseskamira/fastfoodfast/maintainability)
@@ -36,5 +35,5 @@ It is neceaasary for one to install;
 ## AUTHOR:
 - MOSES KAMIRA
 
-## LINK TO GITHUB PAGES API
-- https://github.com/moseskamira/fastfoodfast
+## LINK TO GITHUB PAGES
+- https://moseskamira.github.io/fastfoodfast/
