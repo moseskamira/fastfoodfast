@@ -56,7 +56,8 @@ class Ordersv1Handler(MethodView):
                  'payment_mode': request.json['payment_mode'],
                  'order_status': request.json['order_status']}
         self.orderlistv1.append(order)
-        return jsonify({'Added Order': order})
+        return jsonify({'Added Order': order},
+                       {'length': len(self.orderlistv1)})
 
     def update_orderv1(self, order_id):
         """
