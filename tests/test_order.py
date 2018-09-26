@@ -69,33 +69,4 @@ def test_error_hander_returns_json():
     """
     response = ROUTE_CLIENT().get('/api/v1/orders/hi')
     assert response.status_code == 404
-
-
-def test_if_data_posted_is_in_form_of_json():
-    """
-    function to test if data posted to the place order API is in form of Json
-    """
-    response = ROUTE_CLIENT().post(
-        '/api/v1/orders', content_type='application/json',
-        data=json.dumps(
-            {
-                "orders": [
-                    {
-                        "order_id": 8,
-                        "order__name": "Package One",
-                        "quantity": 5,
-                        "payment_mode": "Mobile Money",
-                        "order_status": "Accepted"
-                    }
-                ]
-            }
-        )
-    )
-    assert response.status_code == 200
-    load_result_data = json.loads(response.data)
-    assert 'orders' in load_result_data
-    assert load_result_data['orders'][0]['order_id'] == 8
-    assert load_result_data['orders'][0]['order_name'] == "Package One"
-    assert load_result_data['orders'][0]['quantity'] == 5
-    assert load_result_data['orders'][0]['payment_mode'] == "Mobile Money"
-    assert load_result_data['order_status'] == "Accepted"
+    
