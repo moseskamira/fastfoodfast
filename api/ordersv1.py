@@ -19,7 +19,8 @@ class Ordersv1Handler(MethodView):
         Method For Returning All Available Orders of Version 1
         """
         return jsonify({"message": "Available Orders.",
-                        "orderlistv1": self.orderlistv1})
+                        "orderlistv1": self.orderlistv1},
+                       {'Length of Order List': len(self.orderlistv1)})
 
     def return_specific_order(self, order_id):
         """
