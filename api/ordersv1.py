@@ -48,6 +48,8 @@ class Ordersv1Handler(MethodView):
         ]
         if not all(order_request):
             return self.fields_missing_info()
+        if not isinstance(request.json['quantity'], int):
+            return jsonify({'Error': 'Please Enter Integer Value'})
         order = {'order_id': len(self.orderlistv1)+1,
                  'order_name': request.json['order_name'],
                  'quantity': request.json['quantity'],
@@ -64,8 +66,10 @@ class Ordersv1Handler(MethodView):
             if orderv1['order_id'] == order_id:
                 order_json = request.get_json()
                 orderv1['order_status'] = order_json['order_status']
+                if not order_json['order_status']:
+                    return jsonify({'Error': 'Enter Order Status'})
                 return jsonify({'Updated Order': orderv1})
-        return jsonify({"Message": "Order_Id Mismatch"})
+            return jsonify({"Message": "Order_Id Mismatch"})
 
     @staticmethod
     def request_missing_fields():
