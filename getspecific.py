@@ -1,6 +1,6 @@
 def return_single_order(self, order_id):
         """
-        Method To Return Single Order By Admin
+        Method To Return A Single Order By Admin
         """
         request_sql = """ SELECT * FROM "order" WHERE order_id = {}""".format(order_id)
         order_turple = DbTransaction.fetch_one(request_sql, order_id)
