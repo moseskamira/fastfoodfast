@@ -1,6 +1,6 @@
 def post_order(self, user_id):
         """
-        Method For Saving Order
+        Method For Saving An Order
         """
         keys = ("quantity", "totalamount", "payment_mode", "order_status")
         if not set(keys).issubset(set(request.json)):
