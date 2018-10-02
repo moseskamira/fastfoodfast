@@ -1,6 +1,6 @@
 def return_menu(self, sql_statement, data=None):
         """
-        Method Returns All Items On Menu
+        Method Returns All Items On The Menu
         """
         sql = sql_statement
         requests_turple_list = []
