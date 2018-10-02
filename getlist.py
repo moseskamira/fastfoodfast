@@ -1,6 +1,6 @@
 def return_all_orders(self, sql_statement, data=None):
         """
-        Method For Returning All Available Orders
+        Method For Returning All  Orders
         """
         sql = sql_statement
         requests_turple_list = []
