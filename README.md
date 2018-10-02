@@ -1,24 +1,2 @@
-# PROJECT TITLE: FAST FOOD FAST
-
-## PROJECT DESCRIPTION:
-FAST FOOD FAST is a Food delivery service App for a Restaurant.
-New users can create an account with the App, Login and then place Food Orders by filling the form. User can also view a History of the previous Food Orders placed using the App.
-An Admin can Add, Edit or Delete Fast Food Items, See a List of Fast Food Items, See a List of Orders, Accept or Decline Orders, Mark Orders as Completed.
-## PREREQUISITE FOR RUNNING FAST FOOD FAST:
-- Internet Connection is a requirement
-- Web Browser
-
-## LINK TO GITHUB PAGES: 
-https://moseskamira.github.io/fastfoodfast/
-
-## HOW TO ACCESS USER PAGES
-- Username: user
-- Password: user
-## HOW TO ACCESS ADMIN PAGES
-- Username: admin
-- Password: admin
-## NOTE: 
-WHEN YOU SEE AN ERROR 405 UPON LOGIN IN, RELOAD THE PAGE AND LOGIN AGAIN
-
-## AUTHOR:
-MOSES KAMIRA
+# FastFoodFastApp
+This project involves developing a Fast Food Fast App with Database
