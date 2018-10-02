@@ -1,6 +1,6 @@
 def post_menu(self ):
         """
-        Method To Save Menu Items
+        Method To Save Menu Items To Menu
         """
         keys = ("item_category", "item_name", "price")
         if not set(keys).issubset(set(request.json)):
