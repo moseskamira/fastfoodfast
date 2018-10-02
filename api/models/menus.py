@@ -16,12 +16,6 @@ class MenuModel(object):
 
     error_message = ErrorMessage()
 
-    # sql = """ SELECT "user".first_name,
-    #         "order".user_id, t1.first_name,
-    #         request.* FROM request JOIN "user" ON("request".user_id = "user".user_id)\
-    #         JOIN "ride" ON("request".ride_id = "ride".ride_id) JOIN "user" t1\
-    #         ON(t1.user_id = "ride".user_id)"""
-
     def return_menu(self, sql_statement, data=None):
         """
         Method Returns All Items On Menu
