@@ -44,18 +44,18 @@ class OrdersHandler:
 
     def return_single_order(self, order_id):
         """
-        Method For Getting Single Order
+        Method To Return Single Order By Admin
         """
-        request_sql = ("SELECT * FROM order WHERE order_id = %s", order_id)
-        order_turple = DbTransaction.fetch_all(request_sql, (order_id))
+        request_sql = """ SELECT * FROM "order" WHERE order_id = {}""".format(order_id)
+        order_turple = DbTransaction.fetch_one(request_sql, order_id)
 
         if order_turple is not None:
-            user_id = order_turple[0]
-            order_id = order_turple[2]
-            quantity = order_turple[3]
-            totalamount = order_turple[4]
-            payment_mode = order_turple[5]
-            order_status = order_turple[6]
+            order_id = order_turple[0]
+            user_id = order_turple[1]
+            quantity = order_turple[2]
+            totalamount = order_turple[3]
+            payment_mode = order_turple[4]
+            order_status = order_turple[5]
             return jsonify({"Status code": 200, "Order Information": {
                  "user_id": user_id,
                 "order_id": order_id,
@@ -81,8 +81,6 @@ class OrdersHandler:
             request.json["payment_mode"].strip(),
             request.json["order_status"]
             ]
-        print(request_condition)
-        #request_condition.append(user_id)
         if not all(request_condition):
             return self.error_message.fields_missing_information(request.json)
 
@@ -106,4 +104,24 @@ class OrdersHandler:
         order.save_order()
         return jsonify({"status_code": 201, "order": order.get_order_information(),
                         "Message": "Order Added Successfully"}), 201
-                        
+    
+    
+    def update_order(self, order_id):
+        """
+        Method To Edit Order Status
+        """
+        if request.content_type == 'application/json':
+            db_order_id = DbTransaction.fetch_one(
+                """SELECT "order_id" FROM "order" WHERE "order_id" = %s""",
+                (order_id, ))
+          
+
+            if db_order_id:
+                edit_sql = """UPDATE order SET order_status = %s WHERE order_id = %s"""
+                edit_data = (request.json["order_status"])
+                nummber_of_updated_rows = DbTransaction.edit(edit_sql, edit_data)
+                return jsonify({"status": "success",
+                "message": "Updated Order " + request.json["order_status"] + " successfully.\
+                " + str(nummber_of_updated_rows) + " row(s) updated"}), 200
+            return self.error_message.no_order_available(order_id)
+        return jsonify({"Staus": "failure", "message": "Content-Type Must Be JSON"}), 400

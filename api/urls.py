@@ -2,6 +2,7 @@
 This module handels requests to urls.
 """
 from api.views import OrderViews, MenuView
+from api.authentication.views import AdminRegistration, AdminLogin, AdminLogout
 from api.authentication.views import UserRegistration, UserLogin, UserLogout
 
 class Urls(object):
@@ -22,6 +23,24 @@ class Urls(object):
 
         app.add_url_rule('/api/v1/users/orders', view_func=order_view, methods=['POST',])
 
+        app.add_url_rule('/api/v1/admin/orders', defaults={'order_id': None},
+                         view_func=order_view,
+                         methods=['GET',])
+        app.add_url_rule('/api/v1/admin/orders/<int:order_id>', view_func=order_view, methods=['GET',])
+
+        app.add_url_rule('/api/v1/orders/<int:order_id>/requests',
+                         view_func=order_view, methods=['POST',])
+    
+        app.add_url_rule('/api/v1/users/orders/<int:order_id>/requests/<int:request_id>',
+                         view_func=MenuView.as_view('request'),
+                         methods=["PUT",])
+
+        
+        app.add_url_rule('/api/v1/admin/menu', view_func=MenuView.as_view('post_menu'),
+                         methods=["POST",])
+        app.add_url_rule('/api/v1/menu', view_func=MenuView.as_view('get_menu'),
+                         methods=["GET",])
+
         app.add_url_rule('/api/v1/auth/signup', view_func=UserRegistration.as_view('register_user'),
                          methods=["POST",])
         app.add_url_rule('/api/v1/auth/login', view_func=UserLogin.as_view('login_user'),
@@ -30,20 +49,16 @@ class Urls(object):
         app.add_url_rule('/api/v1/users/logout',
                          view_func=UserLogout.as_view('logout_user'),
                          methods=["POST",])
-
-
-
-        app.add_url_rule('/api/v1/admin/orders', defaults={'order_id': None},
-                         view_func=order_view,
-                         methods=['GET',])
-        app.add_url_rule('/api/v1/admin/orders/<int:order_id>', view_func=order_view, methods=['GET',])
-
         
-        app.add_url_rule('/api/v1/admin/menu', view_func=MenuView.as_view('post_menu'),
-                         methods=["POST",])
-        app.add_url_rule('/api/v1/menu', view_func=MenuView.as_view('get_menu'),
-                         methods=["GET",])
 
+        app.add_url_rule('/api/v1/admin/signup', view_func=AdminRegistration.as_view('register_admin'),
+                         methods=["POST",])
+        app.add_url_rule('/api/v1/admin/login', view_func=AdminLogin.as_view('login_admin'),
+                         methods=["POST",])
+        
+        app.add_url_rule('/api/v1/admin/logout',
+                         view_func=AdminLogout.as_view('logout_admin'),
+                         methods=["POST",])
         
 
       

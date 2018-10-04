@@ -3,7 +3,7 @@ This module is a User model with its attributes
 """
 import re
 import datetime
-from flask import jsonify, request
+from flask import jsonify
 from flask import Flask
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
@@ -60,8 +60,8 @@ class User(object):
             user_request["first_name"].strip(),
             user_request["last_name"].strip(),
             user_request["email_address"].strip(),
-            user_request["phone_number"],
-            user_request["password"]
+            user_request["phone_number"].strip(),
+            user_request["password"].strip()
         ]
 
         if not all(user_condition):
@@ -73,7 +73,7 @@ class User(object):
                     "message": "Valid Details"}
 
         return {"status": "failure",
-                "error_message": "Incorrect E-mail Address Format"}
+                "error_message": "Missing or Incorrect E-mail Address Format"}
 
     def update_user_status(self, status, user_id):
         """
@@ -96,29 +96,44 @@ class User(object):
         Generates Authentication Token
         """
         from api import APP
-
+        
+        # try:
+        #     token = jwt.JWT.encode({"user_id": user_id,
+        #                         "exp": datetime.datetime.utcnow() +
+        #                                datetime.timedelta(minutes=2000)},
+        #                        APP.secret_key)
+        #     return token
+        # except Exception as error:
+        #     return error
         try:
             token = jwt.encode({'user_id': user_id,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5345678888),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5),
             'iat': datetime.datetime.utcnow()
             }, APP.secret_key)
             
-            return token
+            return (token,
+            APP.secret_key)
         except Exception as e:
             return e
 
-    def decode_token(self, token):
+    def decode_token(self, auth_token):
         """
         Decodes Authentication Token
         """
         from api import APP
         try:
-            token = jwt.decode(token, APP.secret_key)
+            token = jwt.decode(auth_token, APP.secret_key)
             return token['user_id']
         except jwt.ExpiredSignatureError:
-            return 'Signature Expired. Please Log In Again.'
+            return 'Signature expired. Please log in again.'
         except jwt.InvalidTokenError:
-            return 'Invalid Token. Please log In Again.'
+            return 'Invalid token. Please log in again.'
+        # try:
+        #     token = jwt.JWT.decode(auth_token, APP.config.get("SECRET_KEY"))
+        #     return {"user_id": token["user_id"],
+        #             "state": "Success"}
+        # except(Exception, psycopg2.DatabaseError) as error:
+        #     print(error)
 
     def decode_failure(self, message):
         """

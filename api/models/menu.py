@@ -14,14 +14,14 @@ class Menu(object):
         self.item_name = item_name
         self.price = price
 
-    def save_menu(self):
+    def save_menu(self, admin):
         """
         Method Saves Menu.
         """
 
-        menu_sql = """INSERT INTO "menu"(item_category, item_name, price)
-            VALUES(%s, %s, %s);"""
-        menu_data = (self.item_category, self.item_name, self.price)
+        menu_sql = """INSERT INTO "menu"(item_category, item_name, price, admin_id)
+            VALUES(%s, %s, %s, %s);"""
+        menu_data = (self.item_category, self.item_name, self.price, admin)
         DbTransaction.save(menu_sql, menu_data)
 
     def get_menu_information(self):

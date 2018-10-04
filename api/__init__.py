@@ -2,7 +2,6 @@
 Module For Setting Up up Flask Emvironment
 """
 from flask import Flask
-from flask_cors import CORS
 from api.handler import ErrorHandler
 from api.config import ENVIRONMENT, TESTING, SECRET_KEY, DEBUG
 from api.urls import Urls
@@ -18,4 +17,3 @@ APP.errorhandler(404)(ErrorHandler.url_not_found)
 Urls.generate_url(APP)
 DBAccess.create_databasetables()
 
-CORS(APP)

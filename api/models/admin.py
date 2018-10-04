@@ -13,9 +13,9 @@ from api.models.db_transaction import DbTransaction
 from api.models.db_connection import DBAccess
 
 
-class User(object):
+class Admin(object):
     """
-    Class Represents User Entity
+    Class Represents Admin Entity
     """
     def __init__(self, *args):
         if args:
@@ -25,18 +25,18 @@ class User(object):
             self.phone_number = args[3]
             self.password = args[4]
 
-    def save_user(self):
+    def save_admin(self):
         """
-        Method For Saving User Instance In Database Table.
+        Method For Saving Admin Instance In Database Table.
         """
 
-        user_data = (self.first_name, self.last_name,
+        admin_data = (self.first_name, self.last_name,
                      self.email_address, self.phone_number, self.password)
-        user_sql = """INSERT INTO users(first_name, last_name, email_address, phone_number, password) VALUES( %s, %s, %s, %s, %s) RETURNING user_id;"""
-        DbTransaction.save(user_sql, user_data)
-    def return_user_details(self):
+        admin_sql = """INSERT INTO admin(first_name, last_name, email_address, phone_number, password) VALUES( %s, %s, %s, %s, %s) RETURNING admin_id;"""
+        DbTransaction.save(admin_sql, admin_data)
+    def return_admin_details(self):
         """
-        Method Returns User Details
+        Method Returns Admin Details
         """
         return {
             "first_name": self.first_name,
@@ -46,59 +46,59 @@ class User(object):
             "password": self.password
         }
 
-    def verify_user_on_signup(self, user_request):
+    def verify_admin_on_signup(self, admin_request):
         """
-        Method For Verifing User During Creation of Account
+        Method For Verifing Admin During Creation of Account
         """
         keys = ("first_name", "last_name", "email_address",
                 "phone_number", "password")
-        if not set(keys).issubset(set(user_request)):
+        if not set(keys).issubset(set(admin_request)):
             return {"status": "failure",
                     "error_message": "Some Fields Are Missing"}
 
-        user_condition = [
-            user_request["first_name"].strip(),
-            user_request["last_name"].strip(),
-            user_request["email_address"].strip(),
-            user_request["phone_number"],
-            user_request["password"]
+        admin_condition = [
+            admin_request["first_name"].strip(),
+            admin_request["last_name"].strip(),
+            admin_request["email_address"].strip(),
+            admin_request["phone_number"],
+            admin_request["password"]
         ]
 
-        if not all(user_condition):
+        if not all(admin_condition):
             return {"status": "failure",
                     "error_message": "Some Fields Are Empty"}
 
-        if re.match(r"[^@]+@[^@]+\.[^@]+", user_request["email_address"]):
+        if re.match(r"[^@]+@[^@]+\.[^@]+", admin_request["email_address"]):
             return {"status": "success",
                     "message": "Valid Details"}
 
         return {"status": "failure",
                 "error_message": "Incorrect E-mail Address Format"}
 
-    def update_user_status(self, status, user_id):
+    def update_admin_status(self, status, admin_id):
         """
-        Method For Updating User Login Status
+        Method For Updating Admin Login Status
         """
-        user_status_update_sql = """UPDATE users SET is_loggedin = %s
-                    WHERE user_id = %s"""
+        admin_status_update_sql = """UPDATE admin SET is_loggedin = %s
+                    WHERE admin_id = %s"""
         if status:
-            edit_data = (True, user_id)
+            edit_data = (True, admin_id)
         else:
-            edit_data = (False, user_id)
-        DbTransaction.edit(user_status_update_sql, edit_data)
+            edit_data = (False, admin_id)
+        DbTransaction.edit(admin_status_update_sql, edit_data)
         if status:
             return None
         return {"status": "success",
                 'message': 'You Are Successfully Logged Out'}
 
-    def encode_token(self, user_id):
+    def encode_token(self, admin_id):
         """
         Generates Authentication Token
         """
         from api import APP
 
         try:
-            token = jwt.encode({'user_id': user_id,
+            token = jwt.encode({'admin_id': admin_id,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5345678888),
             'iat': datetime.datetime.utcnow()
             }, APP.secret_key)
@@ -114,7 +114,8 @@ class User(object):
         from api import APP
         try:
             token = jwt.decode(token, APP.secret_key)
-            return token['user_id']
+            print(token['admin_id'])
+            return token['admin_id']
         except jwt.ExpiredSignatureError:
             return 'Signature Expired. Please Log In Again.'
         except jwt.InvalidTokenError:
@@ -127,13 +128,13 @@ class User(object):
         """
         return jsonify({"message": message}), 401
 
-    def check_login_status(self, user_id):
+    def check_login_status(self, admin_id):
         """
-        Method For Checking Whether User Is Logged In or Not
+        Method For Checking Whether Admin Is Logged In or Not
         """
         is_loggedin = DbTransaction.fetch_one(
-            """SELECT "is_loggedin" FROM "users" WHERE "user_id" = %s""",
-            (user_id, ))
+            """SELECT "is_loggedin" FROM "admin" WHERE "admin_id" = %s""",
+            (admin_id, ))
         if is_loggedin[0]:
             return True
         return False

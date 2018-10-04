@@ -16,6 +16,7 @@ class MenuModel(object):
 
     error_message = ErrorMessage()
 
+
     def return_menu(self, sql_statement, data=None):
         """
         Method Returns All Items On Menu
@@ -30,16 +31,20 @@ class MenuModel(object):
         request_list = []
         for request_tuple in requests_turple_list:
             request_dict = {
-                "item_category": request_tuple[1],
                 "item_id": request_tuple[0],
-                "item_name": request_tuple[2],
-                "price": request_tuple[3]
+                
+                "item_category": request_tuple[2],
+                "item_name": request_tuple[3],
+                "price": request_tuple[4]
+               
+                
+                
             }
             request_list.append(request_dict)
         return jsonify({"Message": "Menu Fetched Successfully",
                         "Available Menu": request_list})
 
-    def post_menu(self ):
+    def post_menu(self, admin_id):
         """
         Method To Save Menu Items
         """
@@ -63,7 +68,7 @@ class MenuModel(object):
         if menu_existance["status"] == "failure":
             return jsonify({"message": menu_existance["message"]}), 400
 
-        menu.save_menu()
+        menu.save_menu(admin_id)
         return jsonify({"status_code": 201, "Menu": menu.get_menu_information(),
                         "Message": "Menu Item Added Successfully"}), 201
                       
