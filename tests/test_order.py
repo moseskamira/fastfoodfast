@@ -56,8 +56,7 @@ class TestOrder(TestCase):
                          response.json["error_message"])
         self.assertEqual("http://localhost/api/v1/admin/orders/myserver",
                          response.json["url"])
-        """
-        
+
 
     def tearDown(self):
         sql_commands = (
