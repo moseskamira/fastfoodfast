@@ -56,10 +56,6 @@ class TestOrder(TestCase):
                          response.json["error_message"])
         self.assertEqual("http://localhost/api/v1/admin/orders/myserver",
                          response.json["url"])
-
-    def test_post_creates_a_ride_offer(self):
-        """
-        This method tests for the creation of Order
         """
         
 
@@ -81,3 +77,4 @@ class TestOrder(TestCase):
         finally:
             if conn is not None:
                 conn.close()
+
