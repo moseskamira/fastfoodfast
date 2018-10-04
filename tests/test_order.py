@@ -57,7 +57,6 @@ class TestOrder(TestCase):
         self.assertEqual("http://localhost/api/v1/admin/orders/myserver",
                          response.json["url"])
 
-
     def tearDown(self):
         sql_commands = (
             """DROP TABLE IF EXISTS "users" CASCADE;""",
