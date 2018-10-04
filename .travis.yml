@@ -6,7 +6,7 @@ install:
   - pip install  pytest
   - pip install  pytest-cov
 script: 
-  - pytest --cov=api/
+  - py.test --cov=api/
   - coverage
   - coveralls
   - coveralls
