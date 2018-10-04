@@ -35,4 +35,6 @@ It is neceaasary for one to install;
 - MOSES KAMIRA
 
 ## LINK TO GITHUB PAGES
-- https://moseskamira.github.io/fastfoodfast/
+- https://github.com/moseskamira/fastfoodfast
+- https://www.pivotaltracker.com/n/projects/2194764
+-
