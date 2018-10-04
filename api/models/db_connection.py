@@ -15,7 +15,7 @@ class DBAccess(object):
         Method For Establishing Connection To Databse
         """
         connection = psycopg2.connect(
-            "dbname='d4or467mumdvnf' user='bzjrdbxajezifp' host='ec2-23-23-80-20.compute-1.amazonaws.com' password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c' port='5432'"
+            "dbname='FastFoodFast' user='postgres' host='localhost' password='moses12' port='5433'"
         )
         return connection     
 
