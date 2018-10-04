@@ -85,6 +85,7 @@ class DbTransaction(object):
         Method For Editing Data In Database Table.
         """
         conn = None
+        updated_rows = None
         try:
             conn = DBAccess.db_connection()
             cur = conn.cursor()
@@ -93,7 +94,7 @@ class DbTransaction(object):
             conn.commit()
             cur.close()
         except (Exception, psycopg2.DatabaseError) as error:
-            print(error)
+            print(str(error))
         finally:
             if conn is not None:
                 conn.close()

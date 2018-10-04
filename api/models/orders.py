@@ -62,7 +62,7 @@ class OrdersHandler:
                 "quantity": quantity,
                 "totalamount": totalamount,
                 "payment_mode": payment_mode,
-                "order_ststaus": order_status
+                "order_status": order_status
             },
                             "message": "Order Fetched Successfully"})
         return self.error_message.no_order_available(order_id)
@@ -111,17 +111,17 @@ class OrdersHandler:
         Method To Edit Order Status
         """
         if request.content_type == 'application/json':
-            db_order_id = DbTransaction.fetch_one(
-                """SELECT "order_id" FROM "order" WHERE "order_id" = %s""",
-                (order_id, ))
+            # db_order_id = DbTransaction.fetch_one(
+            #     """SELECT "order_id" FROM "order" WHERE "order_id" = %s""",
+            #     (order_id, ))
           
 
-            if db_order_id:
-                edit_sql = """UPDATE order SET order_status = %s WHERE order_id = %s"""
-                edit_data = (request.json["order_status"])
-                nummber_of_updated_rows = DbTransaction.edit(edit_sql, edit_data)
-                return jsonify({"status": "success",
-                "message": "Updated Order " + request.json["order_status"] + " successfully.\
-                " + str(nummber_of_updated_rows) + " row(s) updated"}), 200
-            return self.error_message.no_order_available(order_id)
+            # if db_order_id:
+            edit_sql = "UPDATE order SET order_status = %s WHERE order_id = %s"
+            edit_data = (request.json["order_status"], order_id)
+            nummber_of_updated_rows = DbTransaction.edit(edit_sql, edit_data)
+            return jsonify({"status": "success",
+            "message": "Updated Order " + request.json["order_status"] + " successfully.\
+            " + str(nummber_of_updated_rows) + " row(s) updated"}), 200
+            
         return jsonify({"Staus": "failure", "message": "Content-Type Must Be JSON"}), 400

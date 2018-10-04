@@ -70,10 +70,10 @@ class OrderViews(MethodView):
         if not token:
             return jsonify({"message": "Token Missing"}), 401
 
-        decoded = self.user_object.decode_token(token)
+        decoded = self.admin_object.decode_token(token)
         if isinstance(decoded, str):
-            return self.user_object.decode_failure(decoded)
-        if self.user_object.check_login_status(decoded):
+            return self.admin_object.decode_failure(decoded)
+        if self.admin_object.check_login_status(decoded):
             if order_id:
                 return self.orders_handler.update_order(order_id)
             return jsonify({"message": "Please login"}), 401

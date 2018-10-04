@@ -31,9 +31,8 @@ class Urls(object):
         app.add_url_rule('/api/v1/orders/<int:order_id>/requests',
                          view_func=order_view, methods=['POST',])
     
-        app.add_url_rule('/api/v1/users/orders/<int:order_id>/requests/<int:request_id>',
-                         view_func=MenuView.as_view('request'),
-                         methods=["PUT",])
+        app.add_url_rule('/api/v1/admin/orders/<int:order_id>',
+                         view_func=order_view, methods=["PUT",])
 
         
         app.add_url_rule('/api/v1/admin/menu', view_func=MenuView.as_view('post_menu'),
