@@ -22,9 +22,9 @@ class OrderViews(MethodView):
         """"
         Method Handles Order Posting
         """
-        # token = request.headers.get('Authorization')
-        header = request.headers.get('Authorization')
-        token = header.split()[1]
+        token = request.headers.get('Authorization')
+        # header = request.headers.get('Authorization')
+        # token = header.split()[1]
         if not token:
             return jsonify({"message": "Token Missing"}), 401
 
@@ -45,8 +45,9 @@ class OrderViews(MethodView):
         Returns All Orders if Id Not Set
         Returns Specific Order If Id Is Set
         """
-        header = request.headers.get('Authorization')
-        token = header.split()[1]
+        token = request.headers.get('Authorization')
+        # header = request.headers.get('Authorization')
+        # token = header.split()[1]
         if not token:
             return jsonify({"message": "Token Missing"}), 401
 
@@ -66,8 +67,9 @@ class OrderViews(MethodView):
         """
         Method To Update Order Status
         """
-        header = request.headers.get('Authorization')
-        token = header.split()[1]
+        token = request.headers.get('Authorization')
+        # header = request.headers.get('Authorization')
+        # token = header.split()[1]
         if not token:
             return jsonify({"message": "Token Missing"}), 401
 
@@ -93,8 +95,9 @@ class MenuView(MethodView):
          """
          Method To Edit Menu.
          """
-         header = request.headers.get('Authorization')
-         token = header.split()[1]
+         token = request.headers.get('Authorization')
+        #  header = request.headers.get('Authorization')
+        #  token = header.split()[1]
          
          if not token:
              return jsonify({"message": "Token Missing"}), 401
