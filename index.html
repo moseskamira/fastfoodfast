@@ -1,0 +1,72 @@
+<!--DOCTYPE html-->
+<html>
+<head>
+  <title>Fast Food Fast</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body background="images/package8.jpg">
+  <div class="header" >
+      <a href="#" class="fast">FAST FOOD FAST APP </a> 
+      <div class="header-right">
+        <a href="#"><strong>Help? </strong></a>
+      </div>
+  </div>
+  <div id="loader"></div>
+
+  <main>
+      <div id="dialogoverlay"></div>
+      <div id="dialogbox">
+          <div id="dialog_container">
+              <div id="dialogboxhead"></div>
+              <div id="dialogboxbody"></div>
+              <div id="dialogboxfoot"></div>
+          </div>
+      </div>
+
+    <!--LOGIN FORM-->
+    <div class="login-block" align="right" >
+      <form id="login_user">
+        <label><b>E-mail:</b></label>
+        <input type="email"  name="email_address" id="email_address" placeholder="Enter Email Address" required="required"/>
+        <label><b>Password:</b></label>
+        <input type="password"  name="password" id="password" placeholder="Enter Your Password" required="required"/>
+        <input type="submit"  value="Log In">
+      </form>
+    </div>
+    
+    <!--SIGNPU FORM-->
+      <form id="signup" style="border:1px solid #ccc">
+        <div class="sidebar">
+          <h1> FAST FOOD FAST</h1>
+          <img src="images/foodwelcome.jpg" width="98%" >
+        </div>
+        <div class="content" align="center" style="background-color:lightgray;">
+          <fieldset>
+            <legend> <h3>SIGN UP NOW!</h3> </legend>
+              <p>Please Fill In This Form To Create an Account with Us.</p>
+              <label><b>First Name:</b></label>
+                <input type="text" name="firstName" id="fName" placeholder="Enter First Name"  required><br>
+              <label><b>Last  Name:</b></label>
+                <input type="text" name="lastName" id="lName" placeholder="Enter Last Name"  required><br>
+              <label><b>Email Address:</b></label>
+                <input type="email" name="email" id="email" placeholder="Enter Email Address"  required><br>
+              <label><b>Password:</b></label>
+                <input type="password" name="user_password" id="user_password" placeholder="Enter Password"  required><br>
+              <label><b>Repeat Password:</b></label>
+                <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="Repeat Password:"  required><br>
+              <label><b>Phone Number:</b></label>
+                <input type="tel" name="pNumber" id="pNumber" minlength="10" maxlength="13" required><br>
+              <p>By creating an account, you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+              <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <input type="submit" class="signupbtn" value="submit">
+              </div>
+          </fieldset>
+        </div>
+      </form>
+  </main>
+    <script src="js/dialogs.js"></script>
+    <script src="js/user.js" ></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

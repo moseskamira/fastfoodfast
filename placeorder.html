@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/placeorder.css">
+</head>
+<body background="images/package8.jpg">
+    <div id="dialogoverlay"></div>
+            <div id="dialogbox">
+                <div id="dialog_container">
+                    <div id="dialogboxhead"></div>
+                    <div id="dialogboxbody"></div>
+                    <div id="dialogboxfoot"></div>
+                </div>
+            </div>
+<div class="row">
+    <!--Section indicating Available Food Items categorized in Packages-->
+	<div class="col-25">
+		<div class="container">
+			<h4>Available Packages <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>Unit Cost</b></span></h4>
+			<p><a href="#">Package One</a> <span class="price">$15</span></p>
+			<p><a href="#">Package Two </a> <span class="price">$5</span></p>
+			<p><a href="#">Package Three</a> <span class="price">$8</span></p>
+            <p><a href="#">Package Four</a> <span class="price">$4</span></p>
+            <p><a href="#">OTHERS</a> <span class="price"> </span></p>
+		</div><br/>	 
+	</div>
+    <div class="col-75">
+        <!--Sectin Containing Information Needed When Placing an Order-->
+        <div class="container" style="background-color:lightgray;" id="add_order">
+            <form id='add_order_form'>
+                <h1> <strong>  Fill The Order Form Below </strong></h1>
+                <div class="row">
+                    <div class="col-50">
+                            <label> Select Order Name:</label>
+                            <div class="row">
+                                <div class="col-50">
+                                    <select id="order_name">
+                                        <option value="packageOne">Package One</option>
+                                        <option value="packageTwo">Package Two</option>
+                                        <option value="packageThree">Package Three</option>
+                                        <option value="packageFour">Package Four</option>
+                                        <option value="others">OTHERS</option>
+                                    </select>
+                                </div>
+                            </div><br/>
+                        <label> Specify Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" placeholder="Select Needed Quantity" required><br/>
+                        <br/>
+                        <label> Enter Total Amount:</label>
+                            <input type="text" id="total_amount" name="total_amount" placeholder="Enter Total Amiunt To Be Paid" required>
+                    </div>
+                    <div class="col-50">
+                        <label> Select Payment Mode:</label>
+                        <select id="payment_mode">
+                                <option value="cashOnDelivery">CASH ON DELIVERY</option>
+                                <option value="creditCard">CREDIT CARD</option>
+                                <option value="mobileMoney"> MOBILE MONEY</option>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit" value="SUBMIT" class="btn">
+            </form>
+             <!--End Of Form-->
+        </div>
+    </div>
+</div>
+    <!-- <script src="js/main.js" type="module"></script> -->
+    <!-- <script src="js/all_orders.js"></script> -->
+    <script src="js/order.js"></script>
+
+       
+</body>
+</html>

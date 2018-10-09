@@ -11,10 +11,10 @@ class Order(object):
 
     def __init__(self, *args):
         self.user_id = args[0]
-        self.quantity = args[1]
-        self.totalamount = args[2]
-        self.payment_mode = args[3]
-        self.order_status = args[4]
+        self.order_name = args[1]
+        self.quantity = args[2]
+        self.total_amount = args[3]
+        self.payment_mode = args[4]
         if len(args) > 5:
             self.order_id = args[5]
         else:
@@ -25,13 +25,14 @@ class Order(object):
         Method For Saving Order
         """
 
-        order_sql = """INSERT INTO "order"(user_id, quantity, totalamount, 
-            payment_mode, order_status)
+        order_sql = """INSERT INTO "order"(user_id, order_name, quantity, total_amount, 
+            payment_mode)
         VALUES((%s), %s, %s, %s, %s);"""
         order_data = (
-            self.user_id, self.quantity,
-            self.totalamount, self.payment_mode,
-            self.order_status
+            self.user_id, self.order_name,
+            self.quantity,
+            self.total_amount,
+            self.payment_mode
             )
         DbTransaction.save(order_sql, order_data)
 
@@ -42,10 +43,10 @@ class Order(object):
 
         return {
             "user_id": self.user_id,
+            "order_name": self.order_name,
             "Quantity": self.quantity,
-            "Total Amount": self.totalamount,
+            "Total Amount": self.total_amount,
             "Payment Mode": self.payment_mode,
-            "Order Status": self.order_status
         }
 
     def check_order_existance(self):
@@ -54,8 +55,7 @@ class Order(object):
         """
         sql = """SELECT "user_id", "quantity", "totalamount", "payment_mode",
         "order_status" FROM "order" WHERE "user_id" = %s;"""
-        order_data = (self.user_id, self.quantity, self.totalamount, self.payment_mode,
-                    self.order_status)
+        order_data = (self.user_id, self.order_name, self.quantity, self.total_amount, self.payment_mode)
         order = DbTransaction.fetch_one(sql, order_data)
         if order is None:
             return {"status": "Success", "Message": "Order Does Not Exists"}
