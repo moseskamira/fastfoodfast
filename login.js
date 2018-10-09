@@ -19,7 +19,6 @@ function loginUser(e){
                  },
                  cache: 'no-cache',
                  body: JSON.stringify(data)
-          
               })
               .then((res) => res.json())
               .then((result) => {
@@ -30,7 +29,6 @@ function loginUser(e){
                       window.location.href = 'userrole.html?Authorization='+result.auth_Token;
                       }
                       alert(result.auth_Token);
-                  
                      }
                   else{
                       
