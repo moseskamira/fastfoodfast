@@ -68,8 +68,8 @@ function getOrdersPlaced(){
            if(data.Message === 'Order Successfully Fetched'){
 
             orderValue = `
-            <table id="all_orders">
-                <thead>
+            <table id="all_orders" width="90%">
+                <thead style="background-color: #fde9d9;">
 
                     <tr>
                         <th>ORDER ID</th>
@@ -82,7 +82,7 @@ function getOrdersPlaced(){
 
                     </tr>
                 </thead>
-                <tbody id="orders_tbody" style="text-align:center;">
+                <tbody id="orders_tbody" style="text-align:center; background-color: white; border-color: #f79646 #ccc;">
             `;
              console.log(data.orders)
              for (x in data.orders){
@@ -146,8 +146,8 @@ function getMenu(){
            if(data.Message === "Menu Fetched Successfully"){
 
             dataValue = `
-            <table id="menu">
-                <thead>
+            <table id="menu" width="90%">
+                <thead style="background-color: #fde9d9;">
 
                     <tr>
                         <th>ITEM ID</th>
@@ -158,7 +158,7 @@ function getMenu(){
 
                     </tr>
                 </thead>
-                <tbody id="menu_tbody" style="text-align:center;">
+                <tbody id="menu_tbody" style="text-align:center; background-color: white; border-color: #f79646 #ccc;">
             `;
              console.log(data.Available_Menu)
              for (x in data.Available_Menu){

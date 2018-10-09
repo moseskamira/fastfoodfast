@@ -27,7 +27,7 @@ function loginUser(e){
                       if (email_address ==='james@gmail.com'){
                         window.location.href = 'admin.html?Authorization='+result.auth_Token;
                       }else{
-                      window.location.href = 'placeorder.html?Authorization='+result.auth_Token;
+                      window.location.href = 'userrole.html?Authorization='+result.auth_Token;
                       }
                       alert(result.auth_Token);
                   

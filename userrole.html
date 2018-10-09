@@ -16,17 +16,20 @@
     <!--Section indicating Available Food Items categorized in Packages-->
 	<div class="col-25">
 		<div class="container">
-			<h4>Available Packages <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>Unit Cost</b></span></h4>
-			<p><a href="#">Package One</a> <span class="price">$15</span></p>
-			<p><a href="#">Package Two </a> <span class="price">$5</span></p>
-			<p><a href="#">Package Three</a> <span class="price">$8</span></p>
-            <p><a href="#">Package Four</a> <span class="price">$4</span></p>
-            <p><a href="#">OTHERS</a> <span class="price"> </span></p>
-		</div><br/>	 
+                <button id="menu_button" type="button">View Menu</button><br/>
+                <button id="menu_button" type="button">Place Order Now</button><br/>
+                <button id="all_orders_button" type="button">View Order History</button>
+        </div><br/>	 
 	</div>
     <div class="col-75">
-        <!--Sectin Containing Information Needed When Placing an Order-->
         <div class="container" style="background-color:lightgray;" id="add_order">
+        <!--Sectin Containing Information About Available Menu Items-->
+            <div class="Orderlist" >
+                <div id="menu_div">
+    
+                </div>
+            </div>
+        <!--Sectin Containing Information Needed When Placing an Order-->
             <form id='add_order_form'>
                 <h1> <strong>  Fill The Order Form Below </strong></h1>
                 <div class="row">
@@ -61,12 +64,12 @@
                 <input type="submit" value="SUBMIT" class="btn">
             </form>
              <!--End Of Form-->
-        </div>
+        </div>  
     </div>
 </div>
     <!-- <script src="js/main.js" type="module"></script> -->
     <!-- <script src="js/all_orders.js"></script> -->
-    <script src="js/order.js"></script>
+    <script src="js/userrole.js"></script>
 
        
 </body>
