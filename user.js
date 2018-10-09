@@ -1,6 +1,5 @@
 let loader = document.getElementById('loader');
 document.getElementById('signup').addEventListener('submit',addUser);
-
 function addUser(e){
     e.preventDefault();
     loader.style.display = 'block';
