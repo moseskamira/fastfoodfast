@@ -91,7 +91,7 @@ input {
 }
 .content {
     width: 65%;
-    height: 85vh;
+    height: auto;
     float:right;
   }
   .sidebar {
