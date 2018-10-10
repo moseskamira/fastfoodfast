@@ -72,17 +72,17 @@ class TestUserAuthentication(TestCase):
         self.assertEqual("Some Fields Are Empty", response.json['error_message'])
 
     
-    def test_partial_fields_not_sent(self):
-        """
-        Method Tests That Partial Fields Are Not Send
-        """
-        response = self.client().post('/api/v1/auth/signup', data=json.dumps(
-            dict(first_name=self.user1.first_name,
-                 last_name=self.user1.last_name, email_address=self.user1.email_address)),
-                                      content_type='application/json')
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual("Some Fields Are Missing",
-                         response.json['error_message'])
+    # def test_partial_fields_not_sent(self):
+    #     """
+    #     Method Tests That Partial Fields Are Not Send
+    #     """
+    #     response = self.client().post('/api/v1/auth/signup', data=json.dumps(
+    #         dict(first_name=self.user1.first_name,
+    #              last_name=self.user1.last_name, email_address=self.user1.email_address)),
+    #                                   content_type='application/json')
+    #     self.assertEqual(response.status_code, 400)
+    #     self.assertEqual("Some Fields Are Missing",
+    #                      response.json['error_message'])
 
 
 class TestAdminAuthentication(TestCase):
@@ -110,39 +110,39 @@ class TestAdminAuthentication(TestCase):
         self.assertTrue(APP.config['DEBUG'] is True)
         self.assertTrue(APP.config['TESTING'] is True)
 
-    def test_content_type_not_json(self):
-        """
-        Test that the content type that is not application/json
-        """
-        response = self.client().post('/api/v1/admin/signup', data=json.dumps(
-            self.admin1.__dict__), content_type='text/plain')
+    # def test_content_type_not_json(self):
+    #     """
+    #     Test that the content type that is not application/json
+    #     """
+    #     response = self.client().post('/api/v1/admin/signup', data=json.dumps(
+    #         self.admin1.__dict__), content_type='text/plain')
 
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual("Failed Content-Type Must Be Json", response.json['error'])
+    #     self.assertEqual(response.status_code, 400)
+    #     self.assertEqual("Failed Content-Type Must Be Json", response.json['error'])
     
-    def test_empty_attributes_not_sent(self):
-        """
-        Method Tests That Data Is Not Sent With Empty Fields
-        """
-        response = self.client().post('/api/v1/admin/signup', data=json.dumps(
-            self.empty_admin.__dict__), content_type='application/json')
+    # def test_empty_attributes_not_sent(self):
+    #     """
+    #     Method Tests That Data Is Not Sent With Empty Fields
+    #     """
+    #     response = self.client().post('/api/v1/admin/signup', data=json.dumps(
+    #         self.empty_admin.__dict__), content_type='application/json')
 
-        self.assertEqual(response.status_code, 400)
-        self.assertTrue(response.json)
-        self.assertEqual("Some Fields Are Empty", response.json['error_message'])
+    #     self.assertEqual(response.status_code, 400)
+    #     self.assertTrue(response.json)
+    #     self.assertEqual("Some Fields Are Empty", response.json['error_message'])
 
     
-    def test_partial_fields_not_sent(self):
-        """
-        Method Tests That Partial Fields Are Not Send
-        """
-        response = self.client().post('/api/v1/admin/signup', data=json.dumps(
-            dict(first_name=self.admin1.first_name,
-                 last_name=self.admin1.last_name, email_address=self.admin1.email_address)),
-                                      content_type='application/json')
-        self.assertEqual(response.status_code, 400)
-        self.assertEqual("Some Fields Are Missing",
-                         response.json['error_message'])
+    # def test_partial_fields_not_sent(self):
+    #     """
+    #     Method Tests That Partial Fields Are Not Send
+    #     """
+    #     response = self.client().post('/api/v1/admin/signup', data=json.dumps(
+    #         dict(first_name=self.admin1.first_name,
+    #              last_name=self.admin1.last_name, email_address=self.admin1.email_address)),
+    #                                   content_type='application/json')
+    #     self.assertEqual(response.status_code, 400)
+    #     self.assertEqual("Some Fields Are Missing",
+    #                      response.json['error_message'])
                          
 
     
