@@ -5,6 +5,7 @@ install:
   - pip install -r requirements.txt
   - pip install  pytest
   - pip install  pytest-cov
+  - psql -c 'create daabase FastFoodFast;' -U postgres
 script: 
   - py.test --cov=api/
   - coverage

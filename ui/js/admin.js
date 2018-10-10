@@ -43,7 +43,7 @@ function getOrdersPlaced(){
      });
      var auth_token = filteredParts[0].split('=')[1];
     //  alert(auth_token);
-    fetch('http://127.0.0.1:5000/api/v1/users/orders', {
+    fetch('http://127.0.0.1:5000/api/v1/admin/orders', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
