@@ -100,6 +100,7 @@ function getOrdersPlaced(){
         );
 }
 
+
 document.getElementById('menu_button').addEventListener('click', getMenu);
 function getMenu(){
     // let ordersMessage = document.getElementById('orders_placed_message');
