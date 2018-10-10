@@ -1,13 +1,7 @@
 
 document.getElementById('login_user').addEventListener('submit', loginUser);
-
-
-
-
 function loginUser(e){
     e.preventDefault();
-
-
     let email_address = document.getElementById('email_address').value;
     let password = document.getElementById('password').value;
     const data = {"email_address":email_address, "password":password };
@@ -19,7 +13,6 @@ function loginUser(e){
                  },
                  cache: 'no-cache',
                  body: JSON.stringify(data)
-          
               })
               .then((res) => res.json())
               .then((result) => {
@@ -29,11 +22,9 @@ function loginUser(e){
                       }else{
                       window.location.href = 'userrole.html?Authorization='+result.auth_Token;
                       }
-                      alert(result.auth_Token);
-                  
+                    //   alert(result.auth_Token);
                      }
                   else{
-                      
                       alert('Incorrect email address or password');
                     }
                 });
