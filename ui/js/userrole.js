@@ -38,7 +38,7 @@ function addOrder(e){
 document.getElementById('menu_button').addEventListener('click', getMenu);
 function getMenu(){
 
-    let menuDiv =  document.getElementById('menu_div');
+    // let menuDiv =  document.getElementById('menu_div');
     var str = document.location.search;
      var parts = str.split(/[#\?&]/g); 
      var filteredParts = parts.filter(function (part)  {
@@ -90,6 +90,68 @@ function getMenu(){
         }   
         );
 }
+
+document.getElementById('order_history').addEventListener('click', getOrderHistory);
+function getOrderHistory(){
+
+    // let menuDiv =  document.getElementById('menu_div');
+    var str = document.location.search;
+     var parts = str.split(/[#\?&]/g); 
+     var filteredParts = parts.filter(function (part)  {
+     return part.split('=')[0] === 'Authorization';
+     });
+     var auth_token = filteredParts[0].split('=')[1];
+    //  alert(auth_token);
+    fetch('http://127.0.0.1:5000/api/v1/users/orders', {
+        method: 'GET',
+        cache: 'no-cache',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': auth_token
+        },
+    })
+        .then((res) => res.json())
+        .then(data => {
+           if(data.Message === "Order Fetched Successfully"){
+
+            dataValue = `
+            <table id="user_order" width="90%">
+                <thead style="background-color: #fde9d9;">
+                    <tr>
+                    <th>ORDER ID</th>
+                    <th>USER ID</th>
+                    <th>ORDER NAME</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL AMOUNT</th>
+                    <th>PAYMENT MODE</th>
+                    </tr>
+                </thead>
+                <tbody id="menu_tbody" style="text-align:center; background-color: white; border-color: #f79646 #ccc;">
+            `;
+             console.log(data.Available_Menu)
+             for (x in data.orders){
+                output = `
+                <tr>
+                <td>${data.orders[x].order_id}</td>
+                <td>${data.orders[x].user_id}</td>
+                <td>${data.orders[x].order_name}</td>
+                <td>${data.orders[x].quantity}</td>
+                <td>${data.orders[x].total_amount}</td>
+                <td>${data.orders[x].payment_mode}</td>
+          
+                </tr>      
+             `
+            dataValue += output;   
+             }
+             dataValue += `  </tbody>
+             </table>`;
+             document.getElementById('menu_div').innerHTML = dataValue 
+        }      
+        }   
+        );
+}
+
 
 
 // function getOrdersPlaced(getOrdersPlaced){
