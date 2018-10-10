@@ -37,9 +37,8 @@ function addOrder(e){
 
 document.getElementById('menu_button').addEventListener('click', getMenu);
 function getMenu(){
-    // let ordersMessage = document.getElementById('orders_placed_message');
+
     let menuDiv =  document.getElementById('menu_div');
-    // loader.style.display = 'block';
     var str = document.location.search;
      var parts = str.split(/[#\?&]/g); 
      var filteredParts = parts.filter(function (part)  {
