@@ -20,6 +20,7 @@ function loginUser(e){
               .then((result) => {
                   if(result.status === 'success'){
                       if (email_address ==='james@gmail.com'){
+                        
                         window.location.href = 'admin.html?Authorization='+result.auth_Token;
                       }else{
                       window.location.href = 'userrole.html?Authorization='+result.auth_Token;
