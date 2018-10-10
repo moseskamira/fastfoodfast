@@ -23,7 +23,6 @@ class OrderViews(MethodView):
         Method Handles Order Posting
         """
         token = request.headers.get('Authorization')
-        # header = request.headers.get('Authorization')
         # token = header.split()[1]
         if not token:
             return jsonify({"message": "Token Missing"}), 401
@@ -46,15 +45,14 @@ class OrderViews(MethodView):
         Returns Specific Order If Id Is Set
         """
         token = request.headers.get('Authorization')
-        # header = request.headers.get('Authorization')
         # token = header.split()[1]
         if not token:
             return jsonify({"message": "Token Missing"}), 401
 
-        decoded = self.admin_object.decode_token(token)
+        decoded = self.user_object.decode_token(token)
         if isinstance(decoded, str):
-            return self.admin_object.decode_failure(decoded)
-        if self.admin_object.check_login_status(decoded):
+            return self.user_object.decode_failure(decoded)
+        if self.user_object.check_login_status(decoded):
             if not order_id:
                 request_sql = """SELECT * FROM "order" """
             
@@ -68,7 +66,6 @@ class OrderViews(MethodView):
         Method To Update Order Status
         """
         token = request.headers.get('Authorization')
-        # header = request.headers.get('Authorization')
         # token = header.split()[1]
         if not token:
             return jsonify({"message": "Token Missing"}), 401
@@ -93,20 +90,19 @@ class MenuView(MethodView):
 
     def post(self):
          """
-         Method To Edit Menu.
+         Method To Post Menu.
          """
          token = request.headers.get('Authorization')
-        #  header = request.headers.get('Authorization')
         #  token = header.split()[1]
          
          if not token:
              return jsonify({"message": "Token Missing"}), 401
 
-         decoded = self.admin_object.decode_token(token)
+         decoded = self.user_object.decode_token(token)
          print(decoded)
          if isinstance(decoded, str):
-             return self.admin_object.decode_failure(decoded)
-         if self.admin_object.check_login_status(decoded):
+             return self.user_object.decode_failure(decoded)
+         if self.user_object.check_login_status(decoded):
              if not request or not request.json:
                  return jsonify({"status_code": 400, "data": str(request.data),
                                  "error_message": "content not JSON"}), 400

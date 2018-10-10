@@ -32,10 +32,10 @@ class OrdersHandler:
             request_dict = {
                 "order_id": request_tuple[0],
                 "user_id": request_tuple[1],
-                "quantity": request_tuple[2],
-                "totalamount":  request_tuple[3],
-                "payment_mode": request_tuple[4],
-                "order_status":  request_tuple[5]
+                "order_name": request_tuple[2],
+                "quantity": request_tuple[3],
+                "total_amount":  request_tuple[4],
+                "payment_mode": request_tuple[5]
             }
 
             request_list.append(request_dict)
@@ -52,17 +52,17 @@ class OrdersHandler:
         if order_turple is not None:
             order_id = order_turple[0]
             user_id = order_turple[1]
-            quantity = order_turple[2]
-            totalamount = order_turple[3]
-            payment_mode = order_turple[4]
-            order_status = order_turple[5]
+            order_name = order_turple[2]
+            quantity = order_turple[3]
+            total_amount = order_turple[4]
+            payment_mode = order_turple[5]
             return jsonify({"Status code": 200, "Order Information": {
                  "user_id": user_id,
                 "order_id": order_id,
+                "order_name": order_name,
                 "quantity": quantity,
-                "totalamount": totalamount,
-                "payment_mode": payment_mode,
-                "order_status": order_status
+                "total_amount": total_amount,
+                "payment_mode": payment_mode
             },
                             "message": "Order Fetched Successfully"})
         return self.error_message.no_order_available(order_id)
@@ -71,15 +71,15 @@ class OrdersHandler:
         """
         Method For Saving Order
         """
-        keys = ("quantity", "totalamount", "payment_mode", "order_status")
+        keys = ("order_name","quantity", "total_amount", "payment_mode")
         if not set(keys).issubset(set(request.json)):
             return self.error_message.request_missing_fields()
 
         request_condition = [
+             request.json["order_name"].strip(),
             request.json["quantity"],
-            request.json["totalamount"],
-            request.json["payment_mode"].strip(),
-            request.json["order_status"]
+            request.json["total_amount"],
+            request.json["payment_mode"].strip()
             ]
         if not all(request_condition):
             return self.error_message.fields_missing_information(request.json)
@@ -89,13 +89,13 @@ class OrdersHandler:
             (user_id, ))
         if user is None:
             return self.error_message.no_user_found_response("Order Not created", user_id)
+        order_name = request.json['order_name']
         quantity = request.json['quantity']
-        totalamount = request.json['totalamount']
+        total_amount = request.json['total_amount']
         payment_mode = request.json['payment_mode']
-        order_status = request.json['order_status']
 
-        order = Order(user, quantity, totalamount,
-                    payment_mode, order_status
+        order = Order(user, order_name, quantity, total_amount,
+                    payment_mode
                 )
         order_existance = order.check_order_existance()
         if order_existance["status"] == "failure":
