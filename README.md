@@ -1,9 +1,4 @@
 # FAST FOOD FAST APP
-
-[![Build Status](https://travis-ci.org/moseskamira/fastfoodfast.svg?branch=ChallengeThree)](https://travis-ci.org/moseskamira/fastfoodfast)
-[![Coverage Status](https://coveralls.io/repos/github/moseskamira/fastfoodfast/badge.svg?branch=ChallengeThree)](https://coveralls.io/github/moseskamira/fastfoodfast?branch=ChallengeThree)
-[![Maintainability](https://api.codeclimate.com/v1/badges/153874419629174a2837/maintainability)](https://codeclimate.com/github/moseskamira/fastfoodfast/maintainability)
-
 ## PROJECT DESCRIPTION:
 FAST FOOD FAST is a Food delivery service App for a Restaurant.
 New users can create an account with the App, Login and then place Food Orders by filling the form. User can also view a History of the previous Food Orders placed using the App.
@@ -36,6 +31,5 @@ It is neceaasary for one to install;
 - MOSES KAMIRA
 
 ## LINK TO GITHUB PAGES
-- https://github.com/moseskamira/fastfoodfast
-- https://www.pivotaltracker.com/n/projects/2194764
+-
 -
