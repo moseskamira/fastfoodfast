@@ -59,6 +59,7 @@ function getOrdersPlaced(){
            if(data.Message === 'Order Successfully Fetched'){
             orderValue = `
             <table id="all_orders" width="90%">
+            <tr colspan='9'><input type='text'>  </tr>
                 <thead style="background-color: #fde9d9;">
                     <tr>
                         <th>ORDER ID</th>

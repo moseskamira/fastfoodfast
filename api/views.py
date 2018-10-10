@@ -54,7 +54,7 @@ class OrderViews(MethodView):
             return self.user_object.decode_failure(decoded)
         if self.user_object.check_login_status(decoded):
             if not order_id:
-                request_sql = """SELECT * FROM "order" """
+                request_sql = """SELECT * FROM "order" ORDER BY order_id DESC """
             
                 sql_data = (decoded)
                 return self.orders_handler.return_all_orders(request_sql, sql_data)
@@ -113,7 +113,7 @@ class MenuView(MethodView):
         """
         Method For Retrieving All Items On Menu
         """
-        request_sql = """SELECT * FROM "menu" """
+        request_sql = """SELECT * FROM "menu" ORDER BY item_id ASC"""
        
         return self.menu_model.return_menu(request_sql)
        

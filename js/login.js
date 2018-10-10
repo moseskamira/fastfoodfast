@@ -5,7 +5,7 @@ function loginUser(e){
     let email_address = document.getElementById('email_address').value;
     let password = document.getElementById('password').value;
     const data = {"email_address":email_address, "password":password };
-            fetch('https://apifastfoodfast.herokuapp.com/api/v1/auth/signup', {
+            fetch('http://127.0.0.1:5000/api/v1/auth/login', {
                 method: 'POST',
                 headers : { 
                   'Content-Type': 'application/json',
