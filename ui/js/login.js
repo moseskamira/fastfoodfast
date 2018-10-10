@@ -16,7 +16,7 @@ function loginUser(e){
                  cache: 'no-cache',
                  body: JSON.stringify(data)
               })
-            //   .then((res) => res.json())
+              .then((res) => res.json())
               .then((result) => {
                   if(result.status === 'success'){
                       if (email_address ==='james@gmail.com'){
