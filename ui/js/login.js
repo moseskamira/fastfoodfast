@@ -10,6 +10,7 @@ function loginUser(e){
                 headers : { 
                   'Content-Type': 'application/json',
                   'Accept': 'application/json',
+                  'Authorization': auth_Token
 
                  },
                  cache: 'no-cache',
