@@ -21,9 +21,7 @@ class Urls(object):
                          view_func=order_view,
                          methods=['GET',])
         app.add_url_rule('/api/v1/admin/orders/<int:order_id>', view_func=order_view, methods=['GET',])
-        # app.add_url_rule('/api/v1/users/orders', defaults={'order_id': None},
-        #                  view_func=order_view,
-        #                  methods=['GET',])
+      
 
         app.add_url_rule('/api/v1/users/orders', view_func=order_view,methods=['POST',])
 
@@ -44,20 +42,7 @@ class Urls(object):
                          methods=["POST",])
         app.add_url_rule('/api/v1/auth/login', view_func=UserLogin.as_view('login_user'),
                          methods=["POST",])
-        
-        # app.add_url_rule('/api/v1/users/logout',
-        #                  view_func=UserLogout.as_view('logout_user'),
-        #                  methods=["POST",])
-        
-
-        # app.add_url_rule('/api/v1/admin/signup', view_func=AdminRegistration.as_view('register_admin'),
-        #                  methods=["POST",])
-        # app.add_url_rule('/api/v1/admin/login', view_func=AdminLogin.as_view('login_admin'),
-        #                  methods=["POST",])
-        
-        # app.add_url_rule('/api/v1/admin/logout',
-        #                  view_func=AdminLogout.as_view('logout_admin'),
-        #                  methods=["POST",])
+     
         
 
       
