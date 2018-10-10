@@ -9,7 +9,8 @@ function loginUser(e){
                 method: 'POST',
                 headers : { 
                   'Content-Type': 'application/json',
-                  'Accept': 'application/json'
+                  'Accept': 'application/json',
+
                  },
                  cache: 'no-cache',
                  body: JSON.stringify(data)
