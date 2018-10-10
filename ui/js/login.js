@@ -4,13 +4,13 @@ function loginUser(e){
     e.preventDefault();
     let email_address = document.getElementById('email_address').value;
     let password = document.getElementById('password').value;
-    const data = {"email_address":email_address, "password":password };
+    const data = {email_address, password};
             fetch('https://apifastfoodfast.herokuapp.com/api/v1/auth/login', {
                 method: 'POST',
                 headers : { 
                   'Content-Type': 'application/json',
                   'Accept': 'application/json',
-                  'Authorization': auth_Token
+                  // 'Authorization': auth_Token
 
                  },
                  cache: 'no-cache',
