@@ -14,6 +14,7 @@ function loginUser(e){
 
                  },
                  cache: 'no-cache',
+                 
                  body: JSON.stringify(data)
               })
               .then((res) => res.json())
