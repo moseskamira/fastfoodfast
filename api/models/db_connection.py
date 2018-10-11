@@ -22,8 +22,8 @@ class DBAccess(object):
         else:
             connection = psycopg2.connect(
            
-            "dbname='FastFoodFast'"
-            # "dbname='FastFoodFast' user='postgres' host='localhost' password='moses12' port='5433'"
+            # "dbname='FastFoodFast'"
+            "dbname='FastFoodFast' user='postgres' host='localhost' password='moses12' port='5433'"
         )
             return connection
    

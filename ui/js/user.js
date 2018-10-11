@@ -3,7 +3,7 @@ document.getElementById('signup').addEventListener('submit',addUser);
 
 function addUser(e){
     e.preventDefault();
-    loader.style.display = 'block';
+    // loader.style.display = 'block';
     let first_name = document.getElementById('fName').value;
     let last_name = document.getElementById('lName').value;
     let email_address = document.getElementById('email').value;
@@ -34,8 +34,8 @@ function addUser(e){
             alert('You have successfully registered. You can login');
         }
     })
-        .catch(() => {
-            showNoNetwork(loader);
-        });
+        // .catch(() => {
+        //     showNoNetwork(loader);
+        // });
 }   
 }
