@@ -6,7 +6,6 @@ from unittest import TestCase
 from flask import json
 import psycopg2
 from api.models.user import User
-from api.models.admin import Admin
 from api import APP
 from api.models.db_connection import DBAccess
 
@@ -85,30 +84,30 @@ class TestUserAuthentication(TestCase):
     #                      response.json['error_message'])
 
 
-class TestAdminAuthentication(TestCase):
-    """
-    Tests For API End Points.
-    """
-    admin1 = Admin("James", "kisule",
-                 "getjamesgrant@gmail.com", "0789608543", "moses")
-    empty_admin = Admin("", "",
-                      "moses.africafgn@gmail.com", "0789608543", "moses")
-    def setUp(self):
-        """
-        Defining Test Variables, Initialize APP.
-        """
-        APP.config['TESTING'] = True
-        self.app = APP
-        self.client = self.app.test_client
-        DBAccess.create_databasetables()
+# class TestAdminAuthentication(TestCase):
+#     """
+#     Tests For API End Points.
+#     """
+#     admin1 = Admin("James", "kisule",
+#                  "getjamesgrant@gmail.com", "0789608543", "moses")
+#     empty_admin = Admin("", "",
+#                       "moses.africafgn@gmail.com", "0789608543", "moses")
+#     def setUp(self):
+#         """
+#         Defining Test Variables, Initialize APP.
+#         """
+#         APP.config['TESTING'] = True
+#         self.app = APP
+#         self.client = self.app.test_client
+#         DBAccess.create_databasetables()
 
-    def test_app_variable_config(self):
-        """
-        Method For Tests App Configuration Variables
-        """
-        self.assertNotEqual(APP.config['SECRET_KEY'], "I-Love_Andela")
-        self.assertTrue(APP.config['DEBUG'] is True)
-        self.assertTrue(APP.config['TESTING'] is True)
+#     def test_app_variable_config(self):
+#         """
+#         Method For Tests App Configuration Variables
+#         """
+#         self.assertNotEqual(APP.config['SECRET_KEY'], "I-Love_Andela")
+#         self.assertTrue(APP.config['DEBUG'] is True)
+#         self.assertTrue(APP.config['TESTING'] is True)
 
     # def test_content_type_not_json(self):
     #     """
