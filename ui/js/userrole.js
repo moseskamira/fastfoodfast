@@ -13,7 +13,6 @@ function addOrder(e){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    //  alert(auth_token);
     fetch('http://127.0.0.1:5000/api/v1/users/orders' ,{
         method: 'POST',
         cache: 'no-cache',
@@ -43,7 +42,6 @@ function getMenu(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    //  alert(auth_token);
     fetch('http://127.0.0.1:5000/api/v1/menu', {
         method: 'GET',
         cache: 'no-cache',
@@ -56,6 +54,7 @@ function getMenu(){
         .then((res) => res.json())
         .then(data => {
            if(data.Message === "Menu Fetched Successfully"){
+
             dataValue = `
             <table id="menu" width="90%">
                 <thead style="background-color: #fde9d9;">
@@ -96,7 +95,6 @@ function getOrderHistory(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    //  alert(auth_token);
     fetch('http://127.0.0.1:5000/api/v1/users/orders', {
         method: 'GET',
         cache: 'no-cache',

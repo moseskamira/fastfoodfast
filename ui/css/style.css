@@ -96,7 +96,7 @@ input {
   }
   .sidebar {
     width: 25%;
-    height: auto;
+    height: 55vh;
     float:left;
   }
   #sidenav a {
