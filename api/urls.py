@@ -1,8 +1,7 @@
 """
 This module handels requests to urls.
 """
-from api.views import OrderViews, MenuView
-from api.authentication.views import AdminRegistration, AdminLogin, AdminLogout
+from api.views import OrderViews, MenuView, OrderHistory
 from api.authentication.views import UserRegistration, UserLogin, UserLogout
 
 class Urls(object):
@@ -25,7 +24,8 @@ class Urls(object):
 
         app.add_url_rule('/api/v1/users/orders', view_func=order_view,methods=['POST',])
 
-        app.add_url_rule('/api/v1/users/orders', view_func=order_view, methods=['GET',])
+        app.add_url_rule('/api/v1/users/orders', view_func=OrderHistory.as_view('get_specific_order'),
+                         methods=["GET",])
 
         
         

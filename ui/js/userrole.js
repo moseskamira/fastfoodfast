@@ -95,6 +95,7 @@ function getOrderHistory(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
+     alert(auth_token);
     fetch('http://127.0.0.1:5000/api/v1/users/orders', {
         method: 'GET',
         cache: 'no-cache',

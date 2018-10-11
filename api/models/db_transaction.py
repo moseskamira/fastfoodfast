@@ -67,7 +67,7 @@ class DbTransaction(object):
             if data is not None:
                 cur.execute(sql)
             else:
-                cur.execute(sql, data)
+                cur.execute(sql,(data,))
             rows = cur.fetchall()
             for row in rows:
                 list_tuple.append(row)
