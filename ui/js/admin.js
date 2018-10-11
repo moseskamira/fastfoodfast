@@ -63,6 +63,7 @@ function getOrdersPlaced(){
                     <p>Enter Order Id: <input type="text" name="order_id"><button type="submit" id="specific_order_button">Send</button></p>
                 </form>
             </tr>
+            <tr> <h2> <strong><center>AVAILABLE ORDERS </strong></center></h2>  </tr>
                 <thead style="background-color: #fde9d9;">
                     <tr>
                         <th>ORDER ID</th>
@@ -129,6 +130,7 @@ function getMenu(){
 
             dataValue = `
             <table id="menu" width="90%">
+            <tr> <h2> <strong><center>AVAILABLE MENU ITEMS</strong></center></h2>  </tr>
                 <thead style="background-color: #fde9d9;">
 
                     <tr>

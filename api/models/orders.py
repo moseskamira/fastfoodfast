@@ -129,10 +129,11 @@ class OrdersHandler:
     def return_orders_history(self, sql_stmt, user_id= None):
         """
         Method For Returning All Available Orders
+        As To User
         """
 
         requests_turple_list = DbTransaction.fetch_order_history(sql_stmt, user_id)
-        print(requests_turple_list)
+        # print(requests_turple_list)
             
         request_list = []
         for request_tuple in requests_turple_list:

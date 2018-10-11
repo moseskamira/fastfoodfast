@@ -57,6 +57,7 @@ function getMenu(){
 
             dataValue = `
             <table id="menu" width="90%">
+            <tr> <h2> <strong><center>AVAILABLE MENU ITEMS </strong></center></h2>  </tr>
                 <thead style="background-color: #fde9d9;">
                     <tr>
                         <th>ITEM ID</th>
@@ -95,7 +96,6 @@ function getOrderHistory(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-     alert(auth_token);
     fetch('http://127.0.0.1:5000/api/v1/users/orders', {
         method: 'GET',
         cache: 'no-cache',
@@ -110,6 +110,7 @@ function getOrderHistory(){
            if(data.Message === 'Order Successfully Fetched'){
             orderValue = `
             <table id="order_history" width="90%">
+            <tr> <h2> <strong><center>YOUR ORDER HISTORY </strong></center></h2>  </tr>
                 <thead style="background-color: #fde9d9;">
                     <tr>
                         <th>ORDER ID</th>
