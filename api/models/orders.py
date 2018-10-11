@@ -130,15 +130,10 @@ class OrdersHandler:
         """
         Method For Returning All Available Orders
         """
-        sql = sql_stmt
-        requests_turple_list = []
-        if  user_id is not None:
-            requests_turple_list = DbTransaction.fetch_all(sql, user_id)
-            return requests_turple_list
-        else:
-            requests_turple_list = DbTransaction.fetch_all(sql, user_id)
-            return requests_turple_list
 
+        requests_turple_list = DbTransaction.fetch_order_history(sql_stmt, user_id)
+        print(requests_turple_list)
+            
         request_list = []
         for request_tuple in requests_turple_list:
             request_dict = {
@@ -152,5 +147,5 @@ class OrdersHandler:
 
             request_list.append(request_dict)
         return jsonify({"Message": "Order Successfully Fetched",
-                        "orders": request_list})
+                         "orders": request_list})
 

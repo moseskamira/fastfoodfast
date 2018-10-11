@@ -139,9 +139,9 @@ class OrderHistory(MethodView):
         if isinstance(decoded, str):
             return self.user_object.decode_failure(decoded)
         if self.user_object.check_login_status(decoded):
-            order_sql = """SELECT * FROM order WHERE user_id = %s """
-            sql_data = (decoded)
-            print(sql_data)
+            order_sql = """SELECT *FROM "order" WHERE user_id = %s """
+            sql_data = decoded
+            
             return self.orders_handler.return_orders_history(order_sql, sql_data)
         return jsonify({"message": "Please login"}), 401
        
