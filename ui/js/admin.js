@@ -76,6 +76,7 @@ function getOrdersPlaced(){
                 </thead>
                 <tbody id="orders_tbody" style="text-align:center; background-color: white; border-color: #f79646 #ccc;">
             `;
+            
              console.log(data.orders)
              for (x in data.orders){
                 output = `

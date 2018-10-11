@@ -12,6 +12,7 @@ from api.models.db_connection import DBAccess
 import pytest, psycopg2
 from werkzeug.security import check_password_hash
 
+
 @pytest.fixture
 def test_client():
      return APP.test_client()
