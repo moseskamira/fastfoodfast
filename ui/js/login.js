@@ -10,6 +10,7 @@ function loginUser(e){
                 headers : { 
                   'Content-Type': 'application/json',
                   'Accept': 'application/json',
+                  'Access-Control-Allow-Origin': '*'
                   // 'Authorization': auth_Token
 
                  },

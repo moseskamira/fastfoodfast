@@ -19,7 +19,8 @@ function addUser(e){
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-type': 'application/json'
+            'Content-type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
         },
         cache: 'no-cache',
         body: JSON.stringify(data)
