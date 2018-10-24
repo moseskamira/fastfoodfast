@@ -9,11 +9,9 @@ function loginUser(e){
                 method: 'POST',
               
                 headers : { 
-                  'Content-Type': 'application/json',
-                  'Accept': 'application/json',
-                  'Access-Control-Allow-Origin': '*'
-               
-
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json',
+                    'x-access-token': auth_token
                  },
                  cache: 'no-cache',
                  body: JSON.stringify(data)

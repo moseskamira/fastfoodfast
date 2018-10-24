@@ -18,8 +18,9 @@ function addUser(e){
     fetch('https://apifastfoodfast.herokuapp.com/api/v1/auth/signup',{
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
-            'Content-type': 'application/json'
+            'Accept': 'application/json, text/plain, */*',
+            'Content-type': 'application/json',
+            'x-access-token': auth_token
         },
         cache: 'no-cache',
         body: JSON.stringify(data)
