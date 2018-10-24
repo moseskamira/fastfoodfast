@@ -67,10 +67,8 @@ class UserLogin(MethodView):
 
         query = """SELECT * FROM "users" WHERE "email_address" = %s"""
         user = DbTransaction.fetch_one(query, (post_user_data['email_address'], ))
-        queryp = """SELECT * FROM "users" WHERE "password" = %s"""
-        userp = DbTransaction.fetch_one(queryp, (post_user_data['password'], ))
         # verified_user = self.verify_user_on_login(user, post_user_data['password'])
-        verified_user = self.verify_user_on_login(user, userp)
+        verified_user = self.verify_user_on_login(user, post_user_data['password'])
        
 
         if verified_user["status"] == "failure":
@@ -91,7 +89,7 @@ class UserLogin(MethodView):
             if auth_token:
                 response = {"status": "success", "message": "Successfully Logged In.",
                             # "auth_Token": auth_token
-                            "auth_Token": auth_token.decode("utf-8")
+                            "auth_Token": auth_token.decode('utf-8')
                            }
                 return response
             response = {"status": "failure", "error_message": "Try again"}
