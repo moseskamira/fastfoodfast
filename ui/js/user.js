@@ -15,7 +15,7 @@ function addUser(e){
     }
     else{
         const data = {"first_name":first_name, "last_name":last_name, "email_address":email_address, "phone_number":phone_number,"password":password};
-    fetch('https://frontendapchal.herokuapp.com/api/v1/auth/signup',{
+    fetch('https://apifastfoodfast.herokuapp.com/api/v1/auth/signup',{
         method: 'POST',
         headers: {
             'Accept': 'application/json',

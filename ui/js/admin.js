@@ -12,7 +12,7 @@ function addMenu(e){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://frontendapchal.herokuapp.com/api/v1/admin/menu' ,{
+    fetch('https://apifastfoodfast.herokuapp.com/api/v1/admin/menu' ,{
         method: 'POST',
         cache: 'no-cache',
         headers: {
@@ -43,7 +43,7 @@ function getOrdersPlaced(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://frontendapchal.herokuapp.com/api/v1/admin/orders', {
+    fetch('https://apifastfoodfast.herokuapp.com/api/v1/admin/orders', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
@@ -115,7 +115,7 @@ function getMenu(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://frontendapchal.herokuapp.com/api/v1/menu', {
+    fetch('https://apifastfoodfast.herokuapp.com/api/v1/menu', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
@@ -172,7 +172,7 @@ function getSpecificOrder(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://frontendapchal.herokuapp.com/api/v1/admin/orders/<int order_id>', {
+    fetch('https://apifastfoodfast.herokuapp.com/api/v1/admin/orders/<int order_id>', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
