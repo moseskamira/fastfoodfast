@@ -13,13 +13,13 @@ function addOrder(e){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/users/orders' ,{
+    fetch('http://127.0.0.1:5000/api/v1/users/orders' ,{
         method: 'POST',
         cache: 'no-cache',
         headers: {
             'Accept': 'application/json',
-            'Content-type': 'application/json',
-            'Authorization': auth_token
+            'Content-type': 'application/json, text/plain, */*',
+            'x-access-token': auth_token
         },
         body: JSON.stringify(data)
     })
@@ -42,12 +42,12 @@ function getMenu(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/menu', {
+    fetch('http://127.0.0.1:5000/api/v1/menu', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
             'Accept': 'application/json',
-            'Content-type': 'application/json',
+            'Content-type': 'application/json, text/plain, */*',
             'Authorization': auth_token
         },
     })
@@ -96,13 +96,13 @@ function getOrderHistory(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/users/orders', {
+    fetch('http://127.0.0.1:5000/api/v1/users/orders', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
-            'Accept': 'application/json',
+            'Accept': 'application/json, text/plain, */*',
             'Content-type': 'application/json',
-            'Authorization': auth_token
+            'x-access-token': auth_token
         },
     })
         .then((res) => res.json())
