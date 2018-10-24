@@ -87,7 +87,7 @@ class UserLogin(MethodView):
             print(auth_token.decode())
             if auth_token:
                 response = {"status": "success", "message": "Successfully Logged In.",
-                            "auth_Token": auth_token.decode()
+                            "auth_Token": auth_token.decode("utf-8")
                            }
                 return response
             response = {"status": "failure", "error_message": "Try again"}
