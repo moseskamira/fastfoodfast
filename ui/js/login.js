@@ -27,8 +27,10 @@ function loginUser(e){
                       }
                     //   alert(result.auth_Token);
                      }
-                  else{
-                      alert('Incorrect email address or password');
-                    }
+                
+                })
+                .catch(() => {
+                    showNoNetwork(loader);
                 });
+            
 }
