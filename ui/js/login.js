@@ -10,13 +10,13 @@ function loginUser(e){
               
                 headers : { 
                     'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json'
+                    'Content-type': 'application/json',
                    
                  },
                  cache: 'no-cache',
                  body: JSON.stringify(data)
               })
-              .then((res) => res.text())
+            //   .then((res) => res.text())
               .then((result) => {
                   if(result.status === 'success'){
                       if (email_address ==='james@gmail.com'){
