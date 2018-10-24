@@ -10,8 +10,8 @@ function loginUser(e){
               
                 headers : { 
                     'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json',
-                    'x-access-token': auth_token
+                    'Content-type': 'application/json'
+                   
                  },
                  cache: 'no-cache',
                  body: JSON.stringify(data)
