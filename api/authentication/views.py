@@ -84,6 +84,7 @@ class UserLogin(MethodView):
                     'error_message': 'Please Enter Valid Email address'}
         if check_password_hash(user[5], password):
             auth_token = self.user.encode_token(user[0])
+            print(auth_token.decode())
             if auth_token:
                 response = {"status": "success", "message": "Successfully Logged In.",
                             "auth_Token": auth_token.decode()
