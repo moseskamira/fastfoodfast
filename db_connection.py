@@ -16,11 +16,17 @@ class DBAccess(object):
         """
         if os.getenv('db')== 'heroku':
             connection = psycopg2.connect(
-            database='d4or467mumdvnf',
-            user='bzjrdbxajezifp', 
-            host='ec2-23-23-80-20.compute-1.amazonaws.com',
-            password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c',
+            database='dch2uvdf95hu52',
+            user='gprgrbtluclvpj', 
+            host='ec2-54-235-86-226.compute-1.amazonaws.com',
+            password='4e715df7b74c42341d26bb5f0c8ce984963f9ce06aecf503049e54b13d93391f',
             port='5432'
+            # connection = psycopg2.connect(
+            # database='d4or467mumdvnf',
+            # user='bzjrdbxajezifp', 
+            # host='ec2-23-23-80-20.compute-1.amazonaws.com',
+            # password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c',
+            # port='5432'
         )
             return connection
         else:
