@@ -8,10 +8,10 @@ import psycopg2
 from api import APP
 from api.models.user import User
 from api.models.orders import Order
-from api.models.db_connection import DBAccess
-from tests.test_authentication import TestAdminAuthentication
+from db_connection import DBAccess
 import pytest, psycopg2
 from werkzeug.security import check_password_hash
+
 
 @pytest.fixture
 def test_client():

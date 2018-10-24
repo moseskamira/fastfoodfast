@@ -10,7 +10,7 @@ from werkzeug.security import safe_str_cmp
 import psycopg2
 import jwt
 from api.models.db_transaction import DbTransaction
-from api.models.db_connection import DBAccess
+from db_connection import DBAccess
 
 
 class User(object):

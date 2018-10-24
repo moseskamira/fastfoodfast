@@ -56,7 +56,7 @@ class OrdersHandler:
             quantity = order_turple[3]
             total_amount = order_turple[4]
             payment_mode = order_turple[5]
-            return jsonify({"Status code": 200, "Order Information": {
+            return jsonify({"Status code": 200, "Order_Information": {
                  "user_id": user_id,
                 "order_id": order_id,
                 "order_name": order_name,
@@ -125,3 +125,28 @@ class OrdersHandler:
             " + str(nummber_of_updated_rows) + " row(s) updated"}), 200
             
         return jsonify({"Staus": "failure", "message": "Content-Type Must Be JSON"}), 400
+    
+    def return_orders_history(self, sql_stmt, user_id= None):
+        """
+        Method For Returning All Available Orders
+        As To User
+        """
+
+        requests_turple_list = DbTransaction.fetch_order_history(sql_stmt, user_id)
+        # print(requests_turple_list)
+            
+        request_list = []
+        for request_tuple in requests_turple_list:
+            request_dict = {
+                "order_id": request_tuple[0],
+                "user_id": request_tuple[1],
+                "order_name": request_tuple[2],
+                "quantity": request_tuple[3],
+                "total_amount":  request_tuple[4],
+                "payment_mode": request_tuple[5]
+            }
+
+            request_list.append(request_dict)
+        return jsonify({"Message": "Order Successfully Fetched",
+                         "orders": request_list})
+

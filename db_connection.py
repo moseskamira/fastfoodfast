@@ -16,11 +16,17 @@ class DBAccess(object):
         """
         if os.getenv('db')== 'heroku':
             connection = psycopg2.connect(
-            "dbname='d4or467mumdvnf' user='bzjrdbxajezifp' host='ec2-23-23-80-20.compute-1.amazonaws.com' password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c' port='5432'"
+            database='d4or467mumdvnf',
+            user='bzjrdbxajezifp', 
+            host='ec2-23-23-80-20.compute-1.amazonaws.com',
+            password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c',
+            port='5432'
         )
             return connection
         else:
             connection = psycopg2.connect(
+           
+            # "dbname='FastFoodFast'"
             "dbname='FastFoodFast' user='postgres' host='localhost' password='moses12' port='5433'"
         )
             return connection
@@ -73,6 +79,7 @@ class DBAccess(object):
             cur = conn.cursor()
             for query in table_creation_query:
                 cur.execute(query)
+                print('table created')
             cur.close()
             conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
