@@ -1,7 +1,7 @@
 # FAST FOOD FAST APP
 
 [![Build Status](https://travis-ci.org/moseskamira/fastfoodfast.svg?branch=ChallengeThree)](https://travis-ci.org/moseskamira/fastfoodfast)
-[![Coverage Status](https://coveralls.io/repos/github/moseskamira/fastfoodfast/badge.svg?branch=ChallengeThree)](https://coveralls.io/github/moseskamira/fastfoodfast?branch=ChallengeThree)
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/153874419629174a2837/maintainability)](https://codeclimate.com/github/moseskamira/fastfoodfast/maintainability)
 
 ## PROJECT DESCRIPTION:
