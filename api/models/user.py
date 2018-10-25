@@ -91,21 +91,21 @@ class User(object):
         return {"status": "success",
                 'message': 'You Are Successfully Logged Out'}
 
-    def encode_token(self, user_id):
-        """
-        Generates Authentication Token
-        """
-        from api import APP
+    # def encode_token(self, user_id):
+    #     """
+    #     Generates Authentication Token
+    #     """
+    #     from api import APP
 
-        try:
-            token = jwt.encode({'user_id': user_id,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5345678888),
-            'iat': datetime.datetime.utcnow()
-            }, APP.secret_key)
+    #     try:
+    #         # token = jwt.encode({'user_id': user_id,
+    #         # 'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5345678888),
+    #         # 'iat': datetime.datetime.utcnow()
+    #         # }, APP.secret_key)
             
-            return token
-        except Exception as e:
-            return e
+    #         # return token
+    #     except Exception as e:
+    #         return e
 
     def decode_token(self, token):
         """

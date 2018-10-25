@@ -4,7 +4,11 @@ And User Authentication
 """
 from flask import request, jsonify
 from flask.views import MethodView
+import datetime
+import jwt
 import psycopg2
+from flask_jwt import JWT, jwt_required, current_identity
+from werkzeug.security import safe_str_cmp
 from werkzeug.security import generate_password_hash, check_password_hash
 from api.models.user import User
 from api.models.db_transaction import DbTransaction
@@ -79,14 +83,18 @@ class UserLogin(MethodView):
         """
         Method For Verifing User Before Accesing App
         """
+        from api import APP
         if not user:
             return {"status": "failure",
                     'error_message': 'Please Enter Valid Email address'}
         if check_password_hash(user[5], password):
-            auth_token = self.user.encode_token(user[0])
-            if auth_token:
+            token = jwt.encode({'user_id': user[0],
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5345678888),
+            'iat': datetime.datetime.utcnow()
+            }, APP.secret_key)
+            if token:
                 response = {"status": "success", "message": "Successfully Logged In.",
-                            "auth_Token": auth_token.decode()
+                            "auth_Token": token.decode()
                            }
                 return response
             response = {"status": "failure", "error_message": "Try again"}
