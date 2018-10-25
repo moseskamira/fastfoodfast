@@ -106,26 +106,6 @@ class OrdersHandler:
                         "Message": "Order Added Successfully"}), 201
     
     
-    def update_order(self, order_id):
-        """
-        Method To Edit Order Status
-        """
-        if request.content_type == 'application/json':
-            # db_order_id = DbTransaction.fetch_one(
-            #     """SELECT "order_id" FROM "order" WHERE "order_id" = %s""",
-            #     (order_id, ))
-          
-
-            # if db_order_id:
-            edit_sql = "UPDATE order SET order_status = %s WHERE order_id = %s"
-            edit_data = (request.json["order_status"], order_id)
-            nummber_of_updated_rows = DbTransaction.edit(edit_sql, edit_data)
-            return jsonify({"status": "success",
-            "message": "Updated Order " + request.json["order_status"] + " successfully.\
-            " + str(nummber_of_updated_rows) + " row(s) updated"}), 200
-            
-        return jsonify({"Staus": "failure", "message": "Content-Type Must Be JSON"}), 400
-    
     def return_orders_history(self, sql_stmt, user_id= None):
         """
         Method For Returning All Available Orders
@@ -133,7 +113,6 @@ class OrdersHandler:
         """
 
         requests_turple_list = DbTransaction.fetch_order_history(sql_stmt, user_id)
-        # print(requests_turple_list)
             
         request_list = []
         for request_tuple in requests_turple_list:

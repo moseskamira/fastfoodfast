@@ -23,8 +23,6 @@ class OrderViews(MethodView):
         """
         
         token = request.headers.get('x-access-token')
-        # token = header
-        # token = header.split()[0]
 
         if not token:
             return jsonify({"message": "Token Missing"}), 401
@@ -47,8 +45,6 @@ class OrderViews(MethodView):
         Returns Specific Order If Id Is Set
         """
         token = request.headers.get('x-access-token')
-        # token = header
-        # token = header.split()[0]
         if not token:
             return jsonify({"message": "Token Missing"}), 401
 
@@ -64,24 +60,6 @@ class OrderViews(MethodView):
             return self.orders_handler.return_single_order(order_id)
         return jsonify({"message": "Please login"}), 401
     
-    # def put(self, order_id ):
-    #     """
-    #     Method To Update Order Status
-    #     """
-    #     token = request.headers.get('Authorization')
-    #     # token = header.split()[1]
-    #     if not token:
-    #         return jsonify({"message": "Token Missing"}), 401
-
-    #     decoded = self.admin_object.decode_token(token)
-    #     if isinstance(decoded, str):
-    #         return self.admin_object.decode_failure(decoded)
-    #     if self.admin_object.check_login_status(decoded):
-    #         if order_id:
-    #             return self.orders_handler.update_order(order_id)
-    #         return jsonify({"message": "Please login"}), 401
-    
-
 class MenuView(MethodView):
     """
     Class Handling url Endpoints For Menu.
@@ -96,8 +74,6 @@ class MenuView(MethodView):
          Method To Post Menu.
          """
          token = request.headers.get('x-access-token')
-        #  token = header
-        #  token = header.split()[0]
          
          if not token:
              return jsonify({"message": "Token Missing"}), 401
@@ -135,14 +111,10 @@ class OrderHistory(MethodView):
         This Method Gets Orders Made By Specific User
         """
         token = request.headers.get('x-access-token')
-        # token = header
-        # token = header.split()[0]
-        print(token)
         if not token:
             return jsonify({"message": "Token Missing"}), 401
 
         decoded = self.user_object.decode_token(token)
-        # print(decoded)
 
         if isinstance(decoded, str):
             return self.user_object.decode_failure(decoded)
