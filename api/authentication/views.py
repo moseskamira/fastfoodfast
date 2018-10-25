@@ -67,7 +67,6 @@ class UserLogin(MethodView):
 
         query = """SELECT * FROM "users" WHERE "email_address" = %s"""
         user = DbTransaction.fetch_one(query, (post_user_data['email_address'], ))
-        # verified_user = self.verify_user_on_login(user, post_user_data['password'])
         verified_user = self.verify_user_on_login(user, post_user_data['password'])
        
 
@@ -85,11 +84,9 @@ class UserLogin(MethodView):
                     'error_message': 'Please Enter Valid Email address'}
         if check_password_hash(user[5], password):
             auth_token = self.user.encode_token(user[0])
-            # print(auth_token.decode())
             if auth_token:
                 response = {"status": "success", "message": "Successfully Logged In.",
-                            # "auth_Token": auth_token
-                            "auth_Token": auth_token
+                            "auth_Token": self.user.encode_token(user[0])
                            }
                 return response
             response = {"status": "failure", "error_message": "Try again"}
