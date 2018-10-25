@@ -12,7 +12,7 @@ function addMenu(e){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/admin/menu' ,{
+    fetch('http://127.0.0.1:5000/api/v1/admin/menu' ,{
         method: 'POST',
         cache: 'no-cache',
         headers: {
@@ -43,7 +43,7 @@ function getOrdersPlaced(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/admin/orders', {
+    fetch('http://127.0.0.1:5000/api/v1/admin/orders', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
@@ -57,12 +57,6 @@ function getOrdersPlaced(){
            if(data.Message === 'Order Successfully Fetched'){
             orderValue = `
             <table id="all_orders" width="90%">
-    
-            <tr colspan='9'>
-                <form method="GET" action=" ">
-                    <p>Enter Order Id: <input type="text" name="order_id"><button type="submit" id="specific_order_button">Send</button></p>
-                </form>
-            </tr>
             <tr> <h2> <strong><center>AVAILABLE ORDERS </strong></center></h2>  </tr>
                 <thead style="background-color: #fde9d9;">
                     <tr>
@@ -72,7 +66,7 @@ function getOrdersPlaced(){
                         <th>QUANTITY</th>
                         <th>TOTAL AMOUNT</th>
                         <th>PAYMENT MODE</th>
-                        <th colspan="3">ACTION</th>
+                    
                     </tr>
                 </thead>
                 <tbody id="orders_tbody" style="text-align:center; background-color: white; border-color: #f79646 #ccc;">
@@ -88,10 +82,7 @@ function getOrdersPlaced(){
                         <td>${data.orders[x].quantity}</td>
                         <td>${data.orders[x].total_amount}</td>
                         <td>${data.orders[x].payment_mode}</td>
-                        <td>Accept</td>
-                      
-                        <td>Decline</td>
-                        <td>Complete</td>
+
                 </tr>      
              `
             orderValue += output;  
@@ -115,7 +106,7 @@ function getMenu(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/menu', {
+    fetch('http://127.0.0.1:5000/api/v1/menu', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
@@ -162,17 +153,16 @@ function getMenu(){
         );
 }
 
-document.getElementById('specific_order_button').addEventListener('click', getSpecificOrder);
 function getSpecificOrder(){
-    let ordersMessage = document.getElementById('orders_placed_message');
-    let orderssDiv =  document.getElementById('placed_div');
+    var x = document.getElementById('specific_id').value;
+    let orderssDiv =  document.getElementById('specific_order_div');
     var str = document.location.search;
      var parts = str.split(/[#\?&]/g); 
      var filteredParts = parts.filter(function (part)  {
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/admin/orders/<int order_id>', {
+    fetch('http://127.0.0.1:5000/api/v1/admin/orders/'+x, {
         method: 'GET',
         cache: 'no-cache',
         headers: {
@@ -183,51 +173,45 @@ function getSpecificOrder(){
     })
         .then((res) => res.json())
         .then(data => {
-           if(data.Message === 'Order Successfully Fetched'){
-            orderValue = `
-            <table id="all_orders" width="90%">
-    
-            <tr colspan='9'>
-                <form method="GET" action=" ">
-                    <p>Enter Order Id: <input type="text" name="order_id"><button type="submit">Send</button></p>
-                </form>
-            </tr>
-                <thead style="background-color: #fde9d9;">
-                    <tr>
-                        <th>ORDER ID</th>
-                        <th>USER ID</th>
-                        <th>ORDER NAME</th>
-                        <th>QUANTITY</th>
-                        <th>TOTAL AMOUNT</th>
-                        <th>PAYMENT MODE</th>
-                        <th colspan="3">ACTION</th>
-                    </tr>
-                </thead>
-                <tbody id="orders_tbody" style="text-align:center; background-color: white; border-color: #f79646 #ccc;">
-            `;
-             console.log(data.orders)
-             for (x in data.orders){
-                output = `
-                <tr >
-                        <td>${data.orders[x].order_id}</td>
-                        <td>${data.orders[x].user_id}</td>
-                        <td>${data.orders[x].order_name}</td>
-                        <td>${data.orders[x].quantity}</td>
-                        <td>${data.orders[x].total_amount}</td>
-                        <td>${data.orders[x].payment_mode}</td>
-                        <td>Accept</td>
-                      
-                        <td>Decline</td>
-                        <td>Complete</td>
-                </tr>      
-             `
-            orderValue += output;  
-             }
-             orderValue += `  </tbody>
-             </table>`;
-             document.getElementById('placed_div').innerHTML = orderValue
-        }
+            alert(JSON.stringify(data));
+            if(data.message === 'Order Fetched Successfully'){
+                orderValue = `
+                <table id="specific_" width="90%">
+                <tr> <h2> <strong><center>SPECIFIED ORDER </strong></center></h2>  </tr>
+                    <thead style="background-color: #fde9d9;">
+                        <tr>
+                            <th>ORDER ID</th>
+                            <th>USER ID</th>
+                            <th>ORDER NAME</th>
+                            <th>QUANTITY</th>
+                            <th>TOTAL AMOUNT</th>
+                            <th>PAYMENT MODE</th>
+                            <th colspan="3">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody id="specific_tbody" style="text-align:center; background-color: white; border-color: #f79646 #ccc;">
+                `;
                 
-        }  
-        );
-}
+                 console.log(data)
+                    output = `
+                    <tr >
+                            <td>${data.Order_Information.order_id}</td>
+                            <td>${data.Order_Information.user_id}</td>
+                            <td>${data.Order_Information.order_name}</td>
+                            <td>${data.Order_Information.quantity}</td>
+                            <td>${data.Order_Information.total_amount}</td>
+                            <td>${data.Order_Information.payment_mode}</td>
+                            <td>Accept</td>
+                            <td>Decline</td>
+                            <td>Complete</td>
+                    </tr>      
+                 `
+                orderValue += output;  
+                 orderValue += `  </tbody>
+                 </table>`;
+                 document.getElementById('specific_order_div').innerHTML = orderValue
+            }
+                    
+            }  
+            );
+    }

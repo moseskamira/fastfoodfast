@@ -15,12 +15,11 @@ function addUser(e){
     }
     else{
         const data = {"first_name":first_name, "last_name":last_name, "email_address":email_address, "phone_number":phone_number,"password":password};
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/auth/signup',{
+    fetch('http://127.0.0.1:5000/api/v1/auth/signup',{
         method: 'POST',
         headers: {
-            'Accept': 'application/json, text/plain, */*',
+            'Accept': 'application/json',
             'Content-type': 'application/json'
-           
         },
         cache: 'no-cache',
         body: JSON.stringify(data)

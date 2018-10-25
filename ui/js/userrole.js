@@ -13,7 +13,7 @@ function addOrder(e){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/users/orders' ,{
+    fetch('http://127.0.0.1:5000/api/v1/users/orders' ,{
         method: 'POST',
         cache: 'no-cache',
         headers: {
@@ -42,7 +42,7 @@ function getMenu(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/menu', {
+    fetch('http://127.0.0.1:5000/api/v1/menu', {
         method: 'GET',
         cache: 'no-cache',
         headers: {
@@ -96,7 +96,7 @@ function getOrderHistory(){
      return part.split('=')[0] === 'Authorization';
      });
      var auth_token = filteredParts[0].split('=')[1];
-    fetch('https://apifastfoodfast.herokuapp.com/api/v1/users/orders', {
+    fetch('http://127.0.0.1:5000/api/v1/users/orders', {
         method: 'GET',
         cache: 'no-cache',
         headers: {

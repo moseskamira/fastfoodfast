@@ -5,18 +5,20 @@ function loginUser(e){
     let email_address = document.getElementById('email_address').value;
     let password = document.getElementById('password').value;
     const data = {email_address, password};
-            fetch('https://apifastfoodfast.herokuapp.com/api/v1/auth/login', {
+            fetch('http://127.0.0.1:5000/api/v1/auth/login', {
                 method: 'POST',
               
                 headers : { 
-                    'Accept': 'application/json, text/plain, */*',
-                    'Content-type': 'application/json',
-                   
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                  'Access-Control-Allow-Origin': '*'
+               
+
                  },
                  cache: 'no-cache',
                  body: JSON.stringify(data)
               })
-            //   .then((res) => res.text())
+              .then((res) => res.json())
               .then((result) => {
                   if(result.status === 'success'){
                       if (email_address ==='james@gmail.com'){
@@ -27,10 +29,8 @@ function loginUser(e){
                       }
                     //   alert(result.auth_Token);
                      }
-                
-                })
-                .catch(() => {
-                    showNoNetwork(loader);
+                  else{
+                      alert('Incorrect email address or password');
+                    }
                 });
-            
 }
