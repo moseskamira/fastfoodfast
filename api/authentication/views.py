@@ -89,7 +89,6 @@ class UserLogin(MethodView):
                     'error_message': 'Please Enter Valid Email address'}
         if check_password_hash(user[5], password):
             token = jwt.encode({'user_id': user[0],
-     
             'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=5345678888),
             'iat': datetime.datetime.utcnow()
             }, APP.secret_key)
