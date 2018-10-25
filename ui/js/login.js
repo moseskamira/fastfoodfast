@@ -1,0 +1,36 @@
+
+document.getElementById('login_user').addEventListener('submit', loginUser);
+function loginUser(e){
+    e.preventDefault();
+    let email_address = document.getElementById('email_address').value;
+    let password = document.getElementById('password').value;
+    const data = {email_address, password};
+            fetch('https://apifastfoodfast.herokuapp.com/api/v1/auth/login', {
+                method: 'POST',
+              
+                headers : { 
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json',
+                   
+                 },
+                 cache: 'no-cache',
+                 body: JSON.stringify(data)
+              })
+            //   .then((res) => res.text())
+              .then((result) => {
+                  if(result.status === 'success'){
+                      if (email_address ==='james@gmail.com'){
+                        
+                        window.location.href = 'admin.html?Authorization='+result.auth_Token;
+                      }else{
+                      window.location.href = 'userrole.html?Authorization='+result.auth_Token;
+                      }
+                    //   alert(result.auth_Token);
+                     }
+                
+                })
+                .catch(() => {
+                    showNoNetwork(loader);
+                });
+            
+}
