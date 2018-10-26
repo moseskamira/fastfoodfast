@@ -106,7 +106,7 @@ class UserLogin(MethodView):
 
 class UserLogout(MethodView):
     """
-    Class For Loging Out A User
+    Class For Loging Out A particular User
     """
 
     user_object = User()
