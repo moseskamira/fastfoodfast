@@ -16,10 +16,10 @@ class DBAccess(object):
         """
         
         connection = psycopg2.connect(
-            database='d4or467mumdvnf',
-            user='bzjrdbxajezifp',
-            host='ec2-23-23-80-20.compute-1.amazonaws.com',
-            password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c',
+            database='d55n4ldto5g7gv',
+            user='yuofrzklwfvqhu',
+            host='ec2-54-235-159-101.compute-1.amazonaws.com',
+            password='baf3d3e3c3dd047ff9c122ea0be56a1bd33667def3f2fdeb9ac3a4ff41513015',
             port='5432'
                 
         )
