@@ -35,40 +35,40 @@ class MenuModel(object):
                 
                 "item_category": request_tuple[2],
                 "item_name": request_tuple[3],
-                "price": request_tuple[4]
+                "item_price": request_tuple[4]
                
                 
                 
             }
             request_list.append(request_dict)
         return jsonify({"Message": "Menu Fetched Successfully",
-                        "Available Menu": request_list})
+                        "Available_Menu": request_list})
 
-    def post_menu(self, admin_id):
+    def post_menu(self, user_id):
         """
         Method To Save Menu Items
         """
-        keys = ("item_category", "item_name", "price")
+        keys = ("item_category", "item_name", "item_price")
         if not set(keys).issubset(set(request.json)):
             return self.error_message.request_missing_fields()
         request_condition = [
             request.json["item_category"].strip(),
             request.json["item_name"].strip(),
-            request.json["price"]
+            request.json["item_price"]
             ]
         if not all(request_condition):
             return self.error_message.fields_missing_information(request.json)
         
         item_category = request.json['item_category']
         item_name = request.json['item_name']
-        price = request.json['price']
+        item_price = request.json['item_price']
         
-        menu = Menu(item_category, item_name, price)
+        menu = Menu(item_category, item_name, item_price)
         menu_existance = menu.check_menu_existance()
         if menu_existance["status"] == "failure":
             return jsonify({"message": menu_existance["message"]}), 400
 
-        menu.save_menu(admin_id)
+        menu.save_menu(user_id)
         return jsonify({"status_code": 201, "Menu": menu.get_menu_information(),
                         "Message": "Menu Item Added Successfully"}), 201
                       
