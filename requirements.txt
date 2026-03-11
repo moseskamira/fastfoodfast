@@ -1,4 +1,4 @@
-﻿asgi-redis==0.14.1
+asgi-redis==0.14.1
 asgiref==0.14.0
 asn1crypto==0.24.0
 astroid==2.0.4
@@ -80,7 +80,7 @@ Twisted==16.2.0
 txaio==2.5.1
 typed-ast==1.1.0
 unicodecsv==0.14.1
-urllib3==1.23
+urllib3==2.6.3
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
 wcwidth==0.1.7
