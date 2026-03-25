@@ -1,4 +1,4 @@
-﻿asgi-redis==0.14.1
+asgi-redis==0.14.1
 asgiref==0.14.0
 asn1crypto==0.24.0
 astroid==2.0.4
@@ -58,7 +58,7 @@ psycopg2-binary==2.7.5
 py==1.4.31
 pycodestyle==2.4.0
 pycparser==2.18
-Pygments==2.7.4
+Pygments==2.19.2
 PyJWT==1.6.4
 pylint==2.1.1
 PyMySQL==0.9.2
