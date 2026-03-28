@@ -1,4 +1,4 @@
-﻿asgi-redis==0.14.1
+asgi-redis==0.14.1
 asgiref==0.14.0
 asn1crypto==0.24.0
 astroid==2.0.4
@@ -72,7 +72,7 @@ redis==2.10.5
 requests==2.11.1
 schema==0.6.2
 six==1.10.0
-sqlparse==0.2.4
+sqlparse==0.5.4
 tabulate==0.8.2
 termcolor==1.1.0
 terminaltables==3.1.0
