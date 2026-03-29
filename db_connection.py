@@ -14,17 +14,16 @@ class DBAccess(object):
         """
         Method For Establishing Connection To Databse
         """
-        if os.getenv('db')== 'heroku':
-            connection = psycopg2.connect(
-            # "dbname='d4or467mumdvnf' user='bzjrdbxajezifp' host='ec2-23-23-80-20.compute-1.amazonaws.com' password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c' port='5432'"
-            "host='ec2-23-23-80-20.compute-1.amazonaws.com' dbname='d4or467mumdvnf' user='bzjrdbxajezifp' port='5432' password='004afaa0dfedda5ec4bfb867d47e98a7417b6913c16f91c8019b60cf67bb168c'"
+        
+        connection = psycopg2.connect(
+            database='d55n4ldto5g7gv',
+            user='yuofrzklwfvqhu',
+            host='ec2-54-235-159-101.compute-1.amazonaws.com',
+            password='baf3d3e3c3dd047ff9c122ea0be56a1bd33667def3f2fdeb9ac3a4ff41513015',
+            port='5432'
+                
         )
-            return connection
-        else:
-            connection = psycopg2.connect(
-            "dbname='FastFoodFast' user='postgres' host='localhost' password='moses12' port='5433'"
-        )
-            return connection
+        return connection
    
 
     @staticmethod
@@ -45,35 +44,24 @@ class DBAccess(object):
                 )
             """,
             """
-            CREATE TABLE IF NOT EXISTS "admin" (
-                    admin_id SERIAL PRIMARY KEY,
-                    first_name VARCHAR(50) NOT NULL,
-                    last_name VARCHAR(50) NOT NULL,
-                    email_address VARCHAR(50) UNIQUE NOT NULL,
-                    phone_number VARCHAR(11) NOT NULL,
-                    password VARCHAR(250) NOT NULL,
-                    is_loggedin BOOLEAN DEFAULT FALSE
-                )
-            """,
-            """
             CREATE TABLE IF NOT EXISTS "menu" (
                     item_id SERIAL PRIMARY KEY,
-                    admin_id INTEGER NOT NULL,
+                    user_id INTEGER NOT NULL,
                     item_category VARCHAR(30) NOT NULL,
                     item_name VARCHAR(30) NOT NULL,
-                    price INTEGER NOT NULL,
-                    FOREIGN KEY (admin_id)
-                    REFERENCES "admin" (admin_id)
+                    item_price INTEGER NOT NULL,
+                    FOREIGN KEY (user_id)
+                    REFERENCES "users" (user_id)
                 )
             """,
             """
             CREATE TABLE IF NOT EXISTS "order" (
                     order_id SERIAL PRIMARY KEY,
                     user_id INTEGER NOT NULL,
+                    order_name VARCHAR(30) NOT NULL,
                     quantity INTEGER NOT NULL,
-                    totalamount INTEGER NOT NULL,
+                    total_amount INTEGER NOT NULL,
                     payment_mode VARCHAR(30) NOT NULL,
-                    order_status VARCHAR(30) NOT NULL,
                     FOREIGN KEY (user_id)
                     REFERENCES "users" (user_id)
                 )
@@ -85,6 +73,7 @@ class DBAccess(object):
             cur = conn.cursor()
             for query in table_creation_query:
                 cur.execute(query)
+                print('table created')
             cur.close()
             conn.commit()
         except (Exception, psycopg2.DatabaseError) as error:
